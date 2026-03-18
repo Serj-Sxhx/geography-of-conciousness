@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geography of Consciousness — A Map of Kashmir Shaivism</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+  :root {
+    --gold: #C29B74;
+    --gold-dim: rgba(194,155,116,0.4);
+    --gold-faint: rgba(194,155,116,0.12);
+    --purple: #8B74C2;
+    --purple-dim: rgba(139,116,194,0.4);
+    --purple-faint: rgba(139,116,194,0.1);
+    --green: #74C27E;
+    --green-dim: rgba(116,194,126,0.4);
+    --green-faint: rgba(116,194,126,0.1);
+    --bg: #0D0B12;
+    --bg-card: #141119;
+    --bg-elevated: #1A1722;
+    --bg-surface: #342E42;
+    --text: #E8E4EF;
+    --text-dim: #9A94A8;
+    --text-muted: #6B6578;
+    --border: rgba(194,155,116,0.08);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 80px 24px 40px;
+    position: relative;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 120px; height: 1px;
+    background: var(--gold-dim);
+  }
+  .site-label {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(32px, 5vw, 56px);
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    font-weight: 300;
+  }
+
+  /* NAV TABS */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,11,18,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .tab-scroll {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 0;
+  }
+  .tab-scroll::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 8px 18px;
+    border: 1px solid transparent;
+    border-radius: 100px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  .tab-btn:hover {
+    color: var(--text-dim);
+    border-color: var(--border);
+    background: var(--bg-card);
+  }
+  .tab-btn.active {
+    color: var(--gold);
+    border-color: var(--gold-dim);
+    background: var(--gold-faint);
+  }
+
+  /* MAIN CONTENT */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .panel { display: none; animation: fadeIn 0.4s ease; }
+  .panel.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* TYPOGRAPHY */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 32px;
+    color: var(--gold);
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--text);
+    margin: 32px 0 12px;
+  }
+  p { margin-bottom: 16px; color: var(--text-dim); font-size: 15px; }
+  strong { color: var(--text); font-weight: 500; }
+  em { color: var(--gold); font-style: italic; }
+
+  /* QUOTE */
+  blockquote {
+    border-left: 2px solid var(--gold-dim);
+    padding: 16px 24px;
+    margin: 24px 0;
+    background: var(--gold-faint);
+    border-radius: 0 8px 8px 0;
+  }
+  blockquote p { color: var(--text); font-style: italic; margin-bottom: 4px; font-family: 'Cormorant Garamond', serif; font-size: 17px; }
+  blockquote cite { color: var(--text-muted); font-size: 12px; font-style: normal; }
+
+  /* EXPANDING SECTIONS */
+  details {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: var(--bg-card);
+    overflow: hidden;
+  }
+  details[open] {
+    border-color: var(--gold-dim);
+  }
+  summary {
+    padding: 16px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    transition: background 0.2s;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '＋';
+    font-size: 14px;
+    color: var(--gold);
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  details[open] summary::before { content: '−'; }
+  summary:hover { background: var(--bg-elevated); }
+  .detail-body { padding: 0 20px 20px 52px; }
+  .detail-body p { font-size: 14px; }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+  }
+  th {
+    text-align: left;
+    padding: 10px 14px;
+    color: var(--gold);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold-dim);
+    background: var(--gold-faint);
+  }
+  td {
+    padding: 10px 14px;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  td strong { color: var(--text); }
+  tr:hover td { background: rgba(194,155,116,0.03); }
+
+  /* GRID LAYOUTS */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 24px 0; }
+  @media (max-width: 640px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  /* CARDS */
+  .card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    background: var(--bg-card);
+    transition: border-color 0.3s;
+  }
+  .card:hover { border-color: var(--gold-dim); }
+  .card-num {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .card-sanskrit {
+    font-size: 12px;
+    color: var(--purple);
+    margin-bottom: 8px;
+  }
+  .card-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+  /* TATTVA REALM BLOCKS */
+  .realm {
+    border-radius: 12px;
+    padding: 28px 24px;
+    margin: 24px 0;
+    border: 1px solid;
+  }
+  .realm-pure { border-color: var(--gold-dim); background: var(--gold-faint); }
+  .realm-transition { border-color: var(--purple-dim); background: var(--purple-faint); }
+  .realm-impure { border-color: rgba(116,194,126,0.2); background: var(--green-faint); }
+  .realm-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .realm-pure .realm-label { color: var(--gold); }
+  .realm-transition .realm-label { color: var(--purple); }
+  .realm-impure .realm-label { color: var(--green); }
+
+  /* FLOW DIAGRAM */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding: 20px 0;
+    margin: 24px 0;
+  }
+  .flow-node {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+    min-width: 100px;
+  }
+  .flow-node .fn-label { font-size: 11px; color: var(--gold); font-weight: 600; letter-spacing: 1px; }
+  .flow-node .fn-sub { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+  .flow-arrow { flex-shrink: 0; color: var(--text-muted); padding: 0 4px; font-size: 16px; }
+
+  /* CONTRACTION ROW */
+  .contraction-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .c-box {
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid;
+  }
+  .c-divine { border-color: var(--gold-dim); background: var(--gold-faint); }
+  .c-limited { border-color: var(--purple-dim); background: var(--purple-faint); }
+  .c-box .c-title { font-size: 13px; font-weight: 600; }
+  .c-divine .c-title { color: var(--gold); }
+  .c-limited .c-title { color: var(--purple); }
+  .c-box .c-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .c-arrow { color: var(--text-muted); font-size: 18px; text-align: center; }
+
+  /* CONCENTRIC */
+  .concentric {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 32px auto;
+    aspect-ratio: 1;
+  }
+  .conc-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* VAK PIPELINE */
+  .vak-level {
+    padding: 20px 24px;
+    border-left: 2px solid;
+    margin-left: 24px;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .vak-level::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 24px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid;
+    background: var(--bg);
+  }
+  .vak-1 { border-color: var(--gold); }
+  .vak-1::before { border-color: var(--gold); }
+  .vak-2 { border-color: var(--purple); }
+  .vak-2::before { border-color: var(--purple); }
+  .vak-3 { border-color: var(--green); }
+  .vak-3::before { border-color: var(--green); }
+  .vak-4 { border-color: var(--text-muted); }
+  .vak-4::before { border-color: var(--text-muted); }
+  .vak-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; }
+  .vak-1 .vak-title { color: var(--gold); }
+  .vak-2 .vak-title { color: var(--purple); }
+  .vak-3 .vak-title { color: var(--green); }
+  .vak-4 .vak-title { color: var(--text-dim); }
+
+  /* NESTED MALAS */
+  .mala-outer {
+    border: 1px solid rgba(194,116,116,0.25);
+    border-radius: 12px;
+    padding: 24px;
+    background: rgba(194,116,116,0.04);
+    margin: 24px 0;
+  }
+  .mala-mid {
+    border: 1px solid rgba(194,155,116,0.25);
+    border-radius: 10px;
+    padding: 20px;
+    background: rgba(194,155,116,0.04);
+    margin-top: 16px;
+  }
+  .mala-inner {
+    border: 1px solid var(--gold-dim);
+    border-radius: 8px;
+    padding: 20px;
+    background: var(--gold-faint);
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  /* STATES */
+  .states-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 24px 0;
+  }
+  @media (max-width: 640px) { .states-grid { grid-template-columns: 1fr; } }
+  .state-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    background: var(--bg-card);
+    text-align: center;
+  }
+  .state-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold-dim);
+    margin: 40px auto;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-dim);
+    transition: border-color 0.3s;
+  }
+  footer a:hover { border-color: var(--gold); }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .tag-gold { background: var(--gold-faint); color: var(--gold); border: 1px solid var(--gold-dim); }
+  .tag-purple { background: var(--purple-faint); color: var(--purple); border: 1px solid var(--purple-dim); }
+  .tag-green { background: var(--green-faint); color: var(--green); border: 1px solid var(--green-dim); }
+
+  /* INTRO HERO */
+  .hero-intro {
+    text-align: center;
+    padding: 20px 0 32px;
+  }
+  .hero-intro p {
+    max-width: 620px;
+    margin: 0 auto 16px;
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+
+  /* SCROLL HINT */
+  .scroll-hint {
+    text-align: center;
+    padding: 8px;
+    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="site-label">The Mystical Geography of Awareness</div>
+  <h1>Geography of Consciousness</h1>
+  <p class="subtitle">A Complete Map of Kashmir Shaivism</p>
+</header>
+
+<nav>
+  <div class="tab-scroll">
+    <button class="tab-btn active" data-tab="foundations">Foundations</button>
+    <button class="tab-btn" data-tab="tattvas">36 Tattvas</button>
+    <button class="tab-btn" data-tab="shiva-shakti">Śiva &amp; Śakti</button>
+    <button class="tab-btn" data-tab="five-acts">Five Acts</button>
+    <button class="tab-btn" data-tab="shaktis">Five Śaktis</button>
+    <button class="tab-btn" data-tab="upayas">Four Upāyas</button>
+    <button class="tab-btn" data-tab="malas">Three Malas</button>
+    <button class="tab-btn" data-tab="vak">Vāk &amp; Mantra</button>
+    <button class="tab-btn" data-tab="spanda">Spanda</button>
+    <button class="tab-btn" data-tab="states">States</button>
+    <button class="tab-btn" data-tab="pratyabhijna">Recognition</button>
+    <button class="tab-btn" data-tab="kundalini">Kuṇḍalinī</button>
+    <button class="tab-btn" data-tab="breath">Breath</button>
+    <button class="tab-btn" data-tab="worlds">118 Worlds</button>
+    <button class="tab-btn" data-tab="glossary">Glossary</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════════ FOUNDATIONS ═══════════════ -->
+<section class="panel active" id="foundations">
+  <div class="hero-intro">
+    <p>Kashmir Shaivism is a non-dual philosophical and spiritual tradition originating in the Kashmir Valley. It holds that all of reality is a manifestation of one supreme consciousness — called Śiva — and that this manifestation is sacred.</p>
+    <p>Also known as <strong>Trika Shaivism</strong>, it is intimately connected with Tantra — the practical science of working with consciousness and energy directly.</p>
+  </div>
+
+  <blockquote>
+    <p>"God and the individual are one. To realize this is the essence of Kashmir Shaivism."</p>
+    <cite>— Swami Lakshman Joo</cite>
+  </blockquote>
+
+  <h3>Key Distinguishing Features</h3>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Non-dual</div>
+      <div class="card-desc">There is only one reality — Śiva — appearing as everything. The individual and the universal are not separate.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">World-Affirming</div>
+      <div class="card-desc">Creation is not illusion. It is the overflow of divine love between Śiva and Śakti. The world is sacred.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Householder Tradition</div>
+      <div class="card-desc">No renunciation required. Realization happens within life, not by withdrawing from it.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Grace-Centered</div>
+      <div class="card-desc">Awakening occurs through śaktipāta — the descent of grace from within. Practice and knowledge go hand in hand.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Historical Timeline</h3>
+  <p>The tradition traces its cosmic origin to Lord Śiva, who at the beginning of Kali Yuga (~5,000 years ago) entrusted the sage <strong>Durvāsa</strong> with preserving Shaivism for 432,000 years. For 15 generations, the tradition was carried by "mind-born" yogis and yoginīs.</p>
+
+  <table>
+    <tr><th>Period</th><th>Event</th></tr>
+    <tr><td><strong>~850 CE</strong></td><td>Vasugupta discovers the Śiva Sūtras engraved on a massive rock, directed by Lord Śiva in a dream</td></tr>
+    <tr><td><strong>850–1200 CE</strong></td><td>Golden age — Somānanda, Utpaladeva, Abhinavagupta, Kṣemarāja produce the major philosophical works</td></tr>
+    <tr><td><strong>~1200 CE</strong></td><td>Mughal invasions push the tradition underground for ~500 years. The lineage remains unbroken.</td></tr>
+    <tr><td><strong>1800s</strong></td><td>Dogra dynasty reestablishes the tradition in Kashmir</td></tr>
+    <tr><td><strong>1907–1991</strong></td><td>Swami Lakshman Joo — last living master of the oral tradition — teaches and preserves the teachings</td></tr>
+    <tr><td><strong>1972–1991</strong></td><td>John and Denise Hughes record 700+ hours of Swami Lakshman Joo's lectures</td></tr>
+    <tr><td><strong>Present</strong></td><td>Lakshmanjoo Academy continues publishing and transmitting the teachings worldwide</td></tr>
+  </table>
+
+  <div class="divider"></div>
+
+  <h3>Core Texts</h3>
+  <details>
+    <summary>Śiva Sūtras — Revealed to Vasugupta (~850 CE)</summary>
+    <div class="detail-body"><p>77 aphorisms on the nature of consciousness. Found engraved on a rock as big as a house, discovered by divine direction. The foundational text of the tradition.</p></div>
+  </details>
+  <details>
+    <summary>Tantrāloka — Abhinavagupta (~1000 CE)</summary>
+    <div class="detail-body"><p>"Light on Tantra" — the magnum opus. A comprehensive synthesis of all tantric teachings in 37 chapters. The most complete philosophical work of the tradition.</p></div>
+  </details>
+  <details>
+    <summary>Vijñāna Bhairava Tantra — Ancient Tantric Text</summary>
+    <div class="detail-body"><p>112 meditation techniques given by Śiva (Bhairava) to Śakti (Bhairavī) for realizing the supreme. Ranges from breath practices to spontaneous recognition.</p></div>
+  </details>
+  <details>
+    <summary>Spanda Kārikās — Vasugupta / Kallaṭa</summary>
+    <div class="detail-body"><p>Verses on the doctrine of vibration — the dynamic pulse of consciousness. The theoretical foundation for the Spanda system.</p></div>
+  </details>
+  <details>
+    <summary>Pratyabhijñā Hṛdayam — Kṣemarāja</summary>
+    <div class="detail-body"><p>"The Heart of Recognition" — a concise summary of recognition philosophy. One of the most accessible entry points to the tradition.</p></div>
+  </details>
+  <details>
+    <summary>More core texts...</summary>
+    <div class="detail-body">
+      <table>
+        <tr><td><strong>Pratyabhijñā Sūtras</strong></td><td>Utpaladeva (~925 CE) — The Recognition Sūtras</td></tr>
+        <tr><td><strong>Tantrasāra</strong></td><td>Abhinavagupta — Condensed Tantrāloka</td></tr>
+        <tr><td><strong>Parātrīśikā Vivaraṇa</strong></td><td>Abhinavagupta — Mantra and speech</td></tr>
+        <tr><td><strong>Śivastotrāvalī</strong></td><td>Utpaladeva — Devotional hymns</td></tr>
+        <tr><td><strong>Stavacintāmaṇi</strong></td><td>Bhaṭṭa Nārāyaṇa — Magical Jewel of Devotion</td></tr>
+        <tr><td><strong>Mālinīvijaya Tantra</strong></td><td>Revealed text — Mālinī alphabet and grace</td></tr>
+        <tr><td><strong>Netra Tantra</strong></td><td>Revealed text — Protection, Kuṇḍalinī, subtle practices</td></tr>
+      </table>
+    </div>
+  </details>
+</section>
+
+<!-- ═══════════════ 36 TATTVAS ═══════════════ -->
+<section class="panel" id="tattvas">
+  <div class="section-label">The Architecture of Reality</div>
+  <h2>The 36 Tattvas</h2>
+  <p>The word <em>tattva</em> (तत्त्व) means "that-ness" — a principle of reality. The 36 tattvas map the complete descent of consciousness from infinite awareness to solid matter. Think of it as a frequency gradient: the highest tattvas vibrate at the frequency of pure awareness, progressively densifying into the physical world.</p>
+  <p>Other Indian systems recognize only 25 tattvas (ending at Puruṣa). Kashmir Shaivism adds 11 above — the subtle levels that explain <strong>how</strong> infinite consciousness becomes contracted into an individual.</p>
+
+  <blockquote>
+    <p>"Kashmir Shaivism is the mystical geography of awareness — the map of awareness from completely contracted awareness up to complete expansion where awareness itself becomes the consciousness which was always there."</p>
+    <cite>— John Hughes, Lakshmanjoo Academy</cite>
+  </blockquote>
+
+  <!-- PURE REALM -->
+  <div class="realm realm-pure">
+    <div class="realm-label">Śuddha Adhva — Pure Realm · Tattvas 36–32</div>
+    <p style="color:var(--text-dim);font-size:13px;margin-bottom:16px;">Universal consciousness. No sense of limitation or separation.</p>
+
+    <details>
+      <summary><span class="tag tag-gold">36</span> &nbsp; Śiva — Pure Consciousness (Prakāśa)</summary>
+      <div class="detail-body">
+        <p>The infinite, unchanging ground of all reality. Consciousness before it becomes conscious of anything. The ocean before any wave. The screen on which all experience is projected. The light by which all dreams are seen.</p>
+        <p><strong>Prakāśa</strong> = pure luminosity, illumination. Without this light, nothing could be known or experienced.</p>
+        <blockquote><p>"In the beginning there was only consciousness — an ocean with tides moving in huge fluctuations, but the ocean hadn't risen up into any waves. There wasn't even the concept of I-ness."</p><cite>— George Barrer</cite></blockquote>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="tag tag-gold">35</span> &nbsp; Śakti — Self-Reflective Awareness (Vimarśa)</summary>
+      <div class="detail-body">
+        <p>The first stirring — consciousness becoming aware of itself. Not separate from Śiva but Śiva's own power of self-recognition. If Śiva is the ocean, Śakti is the tide that rises so the ocean can know itself.</p>
+        <p><strong>Vimarśa</strong> = self-reflection. Makes consciousness <em>conscious</em>.</p>
+        <p>Their recognition of each other generates such intensity that it spontaneously overflows — and that overflow is creation.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="tag tag-gold">34</span> &nbsp; Sadāśiva — "I am this" (Icchā / Will)</summary>
+      <div class="detail-body"><p>The first emergence of intention. The "I" (consciousness) begins to stir toward "this" (objectivity), but "I" still dominates. Like the first thought forming in deep meditation — barely there, more feeling than form.</p></div>
+    </details>
+
+    <details>
+      <summary><span class="tag tag-gold">33</span> &nbsp; Īśvara — "This I am" (Jñāna / Knowledge)</summary>
+      <div class="detail-body"><p>The objective universe becomes clearer. Like looking into a mirror and seeing your reflection clearly — you know it's you, but there's now a clear image appearing. The universe exists as a complete blueprint.</p></div>
+    </details>
+
+    <details>
+      <summary><span class="tag tag-gold">32</span> &nbsp; Śuddha Vidyā — "I am I, this is this" (Kriyā / Action)</summary>
+      <div class="detail-body"><p>Perfect balance of unity and diversity. Subject and object equally present and recognized as one. The last tattva before limitation begins. A dancer simultaneously the dance, the dancer, and the audience.</p></div>
+    </details>
+  </div>
+
+  <!-- TRANSITION REALM -->
+  <div class="realm realm-transition">
+    <div class="realm-label">Śuddhāśuddha Adhva — Transition Zone · Tattvas 31–26</div>
+    <p style="color:var(--text-dim);font-size:13px;margin-bottom:16px;">Where the infinite becomes finite. The mechanisms by which the ocean forgets it's an ocean.</p>
+
+    <details>
+      <summary><span class="tag tag-purple">31</span> &nbsp; Māyā — The Veiling Power</summary>
+      <div class="detail-body">
+        <p>"The Measurer" — the power that creates the sense of separation. Not illusion (as in Advaita Vedānta) but a <strong>real creative power</strong> of consciousness. Like a lens that fragments white light into a rainbow — the colors are real, but they come from one source.</p>
+        <p><strong>Key distinction:</strong> In Śaṅkara's Advaita, māyā means the world is unreal. In Kashmir Shaivism, māyā is a real power creating real diversity from unity.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="tag tag-purple">30–26</span> &nbsp; The Five Kañcukas — Coverings of Limitation</summary>
+      <div class="detail-body">
+        <p>Five compression filters applied to infinite consciousness, creating the experience of being a limited individual:</p>
+        <table>
+          <tr><th>Kañcuka</th><th>Contracts</th><th>From → To</th></tr>
+          <tr><td><strong>Kalā</strong> (30)</td><td>Kriyā Śakti</td><td>Omnipotence → "I can only do so much"</td></tr>
+          <tr><td><strong>Vidyā</strong> (29)</td><td>Jñāna Śakti</td><td>Omniscience → "I only know a little"</td></tr>
+          <tr><td><strong>Rāga</strong> (28)</td><td>Ānanda Śakti</td><td>Completeness → "I want, I need, I lack"</td></tr>
+          <tr><td><strong>Kāla</strong> (27)</td><td>Cit Śakti</td><td>Eternality → "I was born, I will die"</td></tr>
+          <tr><td><strong>Niyati</strong> (26)</td><td>Icchā Śakti</td><td>Free will → "I am stuck, effects follow causes"</td></tr>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <!-- IMPURE REALM -->
+  <div class="realm realm-impure">
+    <div class="realm-label">Aśuddha Adhva — Impure Realm · Tattvas 25–1</div>
+    <p style="color:var(--text-dim);font-size:13px;margin-bottom:16px;">Differentiated experience — the world as we know it.</p>
+
+    <details>
+      <summary><span class="tag tag-green">25–24</span> &nbsp; Puruṣa &amp; Prakṛti — Soul &amp; Nature</summary>
+      <div class="detail-body">
+        <p><strong>Puruṣa</strong> — The individual soul. Śiva experiencing himself as "just me." Still divine at core, but now limited.</p>
+        <p><strong>Prakṛti</strong> — Primordial nature. The undifferentiated root of all objective experience, containing three guṇas in balance: sattva (clarity), rajas (activity), tamas (inertia).</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="tag tag-green">23–21</span> &nbsp; Inner Instruments — Buddhi, Ahaṃkāra, Manas</summary>
+      <div class="detail-body">
+        <div class="grid-3">
+          <div class="card"><div class="card-title">Buddhi</div><div class="card-sanskrit">बुद्धि · Tattva 23</div><div class="card-desc">Intellect — the faculty that decides and determines</div></div>
+          <div class="card"><div class="card-title">Ahaṃkāra</div><div class="card-sanskrit">अहंकार · Tattva 22</div><div class="card-desc">Ego — the faculty that claims "I," "me," "mine"</div></div>
+          <div class="card"><div class="card-title">Manas</div><div class="card-sanskrit">मनस् · Tattva 21</div><div class="card-desc">Mind — organizes sensory data, generates thoughts</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="tag tag-green">20–11</span> &nbsp; Powers of Perception &amp; Action</summary>
+      <div class="detail-body">
+        <div class="grid-2">
+          <div>
+            <p style="color:var(--green);font-size:11px;letter-spacing:2px;font-weight:600;margin-bottom:8px;">5 PERCEPTION POWERS (JÑĀNENDRIYAS)</p>
+            <p>20 · Hearing &nbsp;·&nbsp; 19 · Touch &nbsp;·&nbsp; 18 · Seeing<br>17 · Tasting &nbsp;·&nbsp; 16 · Smelling</p>
+          </div>
+          <div>
+            <p style="color:var(--green);font-size:11px;letter-spacing:2px;font-weight:600;margin-bottom:8px;">5 ACTION POWERS (KARMENDRIYAS)</p>
+            <p>15 · Speech &nbsp;·&nbsp; 14 · Grasping &nbsp;·&nbsp; 13 · Movement<br>12 · Elimination &nbsp;·&nbsp; 11 · Procreation</p>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="tag tag-green">10–1</span> &nbsp; Subtle &amp; Gross Elements</summary>
+      <div class="detail-body">
+        <p style="color:var(--green);font-size:11px;letter-spacing:2px;font-weight:600;margin-bottom:8px;">5 SUBTLE ELEMENTS (TANMĀTRAS)</p>
+        <p>Sound · Touch · Form · Taste · Smell</p>
+        <p style="color:var(--green);font-size:11px;letter-spacing:2px;font-weight:600;margin:16px 0 8px;">5 GROSS ELEMENTS (MAHĀBHŪTAS)</p>
+        <div class="grid-3" style="grid-template-columns:repeat(5,1fr);">
+          <div class="card" style="text-align:center;padding:12px;"><div class="card-title" style="font-size:15px;">Space</div><div class="card-sanskrit">Ākāśa · 5</div></div>
+          <div class="card" style="text-align:center;padding:12px;"><div class="card-title" style="font-size:15px;">Air</div><div class="card-sanskrit">Vāyu · 4</div></div>
+          <div class="card" style="text-align:center;padding:12px;"><div class="card-title" style="font-size:15px;">Fire</div><div class="card-sanskrit">Tejas · 3</div></div>
+          <div class="card" style="text-align:center;padding:12px;"><div class="card-title" style="font-size:15px;">Water</div><div class="card-sanskrit">Āpas · 2</div></div>
+          <div class="card" style="text-align:center;padding:12px;"><div class="card-title" style="font-size:15px;">Earth</div><div class="card-sanskrit">Pṛthivī · 1</div></div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <blockquote>
+    <p>"How does an ocean become a drop? That's the question."</p>
+    <cite>— George Barrer</cite>
+  </blockquote>
+</section>
+
+<!-- ═══════════════ ŚIVA & ŚAKTI ═══════════════ -->
+<section class="panel" id="shiva-shakti">
+  <div class="section-label">The Fundamental Polarity</div>
+  <h2>Prakāśa &amp; Vimarśa</h2>
+  <p>This is the single most important conceptual pair in all of Kashmir Shaivism — the two inseparable aspects of consciousness.</p>
+
+  <div class="grid-2" style="margin:32px 0;">
+    <div class="card" style="border-color:var(--gold-dim);">
+      <div class="card-title" style="font-size:24px;">Śiva</div>
+      <div class="card-sanskrit">PRAKĀŚA · प्रकाश</div>
+      <div class="divider" style="margin:12px 0;width:40px;background:var(--gold-dim);"></div>
+      <div class="card-desc">The Light of Consciousness. The sheer radiance that illuminates all experience. The screen on which everything is projected. The light you see your dreams by — even in a dark room with eyes closed.</div>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:12px;font-style:italic;">Passive, unchanging, luminous ground</p>
+    </div>
+    <div class="card" style="border-color:var(--purple-dim);">
+      <div class="card-title" style="color:var(--purple);font-size:24px;">Śakti</div>
+      <div class="card-sanskrit">VIMARŚA · विमर्श</div>
+      <div class="divider" style="margin:12px 0;width:40px;background:var(--purple-dim);"></div>
+      <div class="card-desc">Self-Reflective Awareness. The power of consciousness to know itself — to turn back and recognize "I am." Without Vimarśa, Prakāśa would be a mirror reflecting nothing — luminous but inert.</div>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:12px;font-style:italic;">Dynamic, active, self-recognizing power</p>
+    </div>
+  </div>
+
+  <div class="card" style="text-align:center;padding:24px;border-color:var(--gold-dim);background:var(--gold-faint);">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);margin-bottom:8px;">SPANDA</div>
+    <div style="font-size:13px;color:var(--text-dim);">Where light meets self-recognition — the primordial pulse</div>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">They are one, not two. Like the sun and its light. Like fire and its heat.</div>
+  </div>
+
+  <div class="grid-2" style="margin-top:24px;">
+    <div class="card" style="text-align:center;">
+      <p style="font-size:13px;color:var(--gold);">Prakāśa without Vimarśa =</p>
+      <p style="font-size:13px;font-style:italic;">Light with no one to see it</p>
+    </div>
+    <div class="card" style="text-align:center;">
+      <p style="font-size:13px;color:var(--purple);">Vimarśa without Prakāśa =</p>
+      <p style="font-size:13px;font-style:italic;">Seeing with nothing to illuminate</p>
+    </div>
+  </div>
+
+  <blockquote>
+    <p>"Without Śakti, there would be no Śiva. Without this ability of Śiva's consciousness to rise up in this feminine way and reflect on itself, there would be no Śiva."</p>
+    <cite>— George Barrer</cite>
+  </blockquote>
+</section>
+
+<!-- ═══════════════ FIVE ACTS ═══════════════ -->
+<section class="panel" id="five-acts">
+  <div class="section-label">Pañcakṛtya</div>
+  <h2>The Five Divine Acts</h2>
+  <p>Śiva continuously performs five acts that constitute all cosmic activity. They happen simultaneously at every level — from the cosmic to the personal.</p>
+
+  <div class="grid-3" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="card"><div class="card-sanskrit">SṚṢṬI · सृष्टि</div><div class="card-title">Creation</div><div class="card-desc">Projecting new experience into being. Every perception is an act of creation.</div></div>
+    <div class="card"><div class="card-sanskrit">STHITI · स्थिति</div><div class="card-title">Maintenance</div><div class="card-desc">Sustaining creation so experience can unfold. Every sustained thought is maintenance.</div></div>
+    <div class="card"><div class="card-sanskrit">SAṂHĀRA · संहार</div><div class="card-title">Dissolution</div><div class="card-desc">Withdrawing experience back into consciousness. Every forgetting is dissolution.</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card"><div class="card-sanskrit">TIRODHĀNA · तिरोधान</div><div class="card-title">Concealment</div><div class="card-desc">Hiding one's true nature — the act that makes limitation possible. The fact that we don't recognize our divinity.</div></div>
+    <div class="card"><div class="card-sanskrit">ANUGRAHA · अनुग्रह</div><div class="card-title">Grace</div><div class="card-desc">Revealing one's true nature — the act that makes liberation possible. The moment of insight and awakening.</div></div>
+  </div>
+
+  <blockquote>
+    <p>"We are continually creating, maintaining, and destroying our own reality 24/7."</p>
+    <cite>— George Barrer</cite>
+  </blockquote>
+</section>
+
+<!-- ═══════════════ FIVE SHAKTIS ═══════════════ -->
+<section class="panel" id="shaktis">
+  <div class="section-label">The Contraction of Divine Powers</div>
+  <h2>Five Śaktis → Five Kañcukas</h2>
+  <p>The five fundamental powers of consciousness — and how Māyā contracts each one into the limited experience of being an individual.</p>
+
+  <div class="contraction-row">
+    <div class="c-box c-divine"><div class="c-title">CIT ŚAKTI</div><div class="c-sub">Eternality · Pure Awareness</div></div>
+    <div class="c-arrow">→ Māyā →</div>
+    <div class="c-box c-limited"><div class="c-title">KĀLA</div><div class="c-sub">Time-bound · "I was born, I'll die"</div></div>
+  </div>
+  <div class="contraction-row">
+    <div class="c-box c-divine"><div class="c-title">ĀNANDA ŚAKTI</div><div class="c-sub">Fullness · Perfect Bliss</div></div>
+    <div class="c-arrow">→ Māyā →</div>
+    <div class="c-box c-limited"><div class="c-title">RĀGA</div><div class="c-sub">Desire · "I want, I lack"</div></div>
+  </div>
+  <div class="contraction-row">
+    <div class="c-box c-divine"><div class="c-title">ICCHĀ ŚAKTI</div><div class="c-sub">Omnipresence · Free Will</div></div>
+    <div class="c-arrow">→ Māyā →</div>
+    <div class="c-box c-limited"><div class="c-title">NIYATI</div><div class="c-sub">Causality · "I'm stuck here"</div></div>
+  </div>
+  <div class="contraction-row">
+    <div class="c-box c-divine"><div class="c-title">JÑĀNA ŚAKTI</div><div class="c-sub">Omniscience · All-Knowing</div></div>
+    <div class="c-arrow">→ Māyā →</div>
+    <div class="c-box c-limited"><div class="c-title">VIDYĀ</div><div class="c-sub">Limited knowing · "I know so little"</div></div>
+  </div>
+  <div class="contraction-row">
+    <div class="c-box c-divine"><div class="c-title">KRIYĀ ŚAKTI</div><div class="c-sub">Omnipotence · Unlimited Action</div></div>
+    <div class="c-arrow">→ Māyā →</div>
+    <div class="c-box c-limited"><div class="c-title">KALĀ</div><div class="c-sub">Limited agency · "I can only do so much"</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOUR UPAYAS ═══════════════ -->
+<section class="panel" id="upayas">
+  <div class="section-label">Means of Realization</div>
+  <h2>The Four Upāyas</h2>
+  <p>Four progressive approaches to recognizing your true nature — from the most structured to the most spontaneous.</p>
+
+  <details>
+    <summary><span class="tag tag-green">ĀṆAVOPĀYA</span> &nbsp; The Individual Means — Spanda System</summary>
+    <div class="detail-body">
+      <p>For those experiencing strong differentiation. The most structured path, using external supports as bridges to inner experience: mantra recitation, breath awareness, study of sacred texts, concentration practices, physical yoga, ritual.</p>
+      <blockquote><p>"The practices within this first means give us a glimpse behind the state of differentiation that we're caught up in."</p><cite>— George Barrer</cite></blockquote>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tag tag-purple">ŚĀKTOPĀYA</span> &nbsp; The Energy Means — Krama System</summary>
+    <div class="detail-body">
+      <p>The path of Śakti — energy. The practitioner enters meditation easily, needing fewer supports. Working with the subtle energy of awareness itself, contemplation of philosophical truths, the energy behind mantra rather than its repetition, absorption through music or beauty.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tag tag-gold">ŚĀMBHAVOPĀYA</span> &nbsp; The Divine Means — Pratyabhijñā System</summary>
+    <div class="detail-body">
+      <p>Awareness is so expanded that virtually no technique is needed. There is still some process, but it's extremely subtle — simply observing the activity of the five senses and diving into awareness.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tag tag-gold">ANUPĀYA</span> &nbsp; No Means — Beyond All Systems</summary>
+    <div class="detail-body">
+      <p>Literally "no means." Spontaneous self-recognition without any practice. By grace alone — the individual simply wakes up.</p>
+      <blockquote><p>"Suddenly this dawning happens automatically without having done anything... and all of a sudden their life has changed."</p><cite>— George Barrer</cite></blockquote>
+    </div>
+  </details>
+
+  <div class="card" style="text-align:center;margin-top:24px;padding:24px;">
+    <p style="font-style:italic;color:var(--text-dim);font-family:'Cormorant Garamond',serif;font-size:17px;">"How long should I do this practice?"</p>
+    <p style="font-style:italic;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:17px;">"Until you're enlightened."</p>
+    <p style="font-size:11px;color:var(--text-muted);margin-top:8px;">— Swami Lakshman Joo</p>
+  </div>
+</section>
+
+<!-- ═══════════════ THREE MALAS ═══════════════ -->
+<section class="panel" id="malas">
+  <div class="section-label">Impurities — The Filters of Limitation</div>
+  <h2>The Three Malas</h2>
+  <p>Three existential conditions that distort the experience of unlimited consciousness into contracted, limited experience. Not physical impurities — ways consciousness experiences limitation.</p>
+
+  <div class="mala-outer">
+    <div style="font-size:16px;font-weight:600;color:#C27474;font-family:'Cormorant Garamond',serif;">Kārma Mala — Conditioning from Action</div>
+    <p style="font-size:13px;color:var(--text-dim);margin:8px 0;">"I am the doer and must suffer or enjoy the results." Accumulated impressions from past actions shape present experience. <strong>Maps to:</strong> behavioral pattern loops.</p>
+    <div class="mala-mid">
+      <div style="font-size:16px;font-weight:600;color:var(--gold);font-family:'Cormorant Garamond',serif;">Māyīya Mala — Perception of Difference</div>
+      <p style="font-size:13px;color:var(--text-dim);margin:8px 0;">"Everything is separate from me." Subject/object duality perceived as fundamental reality. <strong>Maps to:</strong> perceptual fragmentation.</p>
+      <div class="mala-inner">
+        <div style="font-size:18px;font-weight:600;color:var(--gold);font-family:'Cormorant Garamond',serif;">Āṇava Mala</div>
+        <div style="font-size:12px;color:var(--text-dim);margin:4px 0;">THE DEEPEST ROOT</div>
+        <div style="font-size:15px;color:var(--text);margin-top:8px;">"I am limited. I am incomplete. I am not enough."</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:8px;">The fundamental forgetting of who you are — identity distortion.<br>From this, the other two impurities arise.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ VĀK & MANTRA ═══════════════ -->
+<section class="panel" id="vak">
+  <div class="section-label">How Consciousness Becomes Word</div>
+  <h2>Vāk — The Four Levels of Speech</h2>
+  <p>Kashmir Shaivism provides an extraordinarily detailed analysis of speech — not just as communication, but as a fundamental process of manifestation. Speech is how consciousness creates.</p>
+
+  <div class="vak-level vak-1">
+    <div class="vak-title">Parā · परा · "Supreme"</div>
+    <p style="font-size:13px;color:var(--text-dim);">Pure potential. Beyond speech. Silence pregnant with all possibility. Connected to the heart center. The seed state from which all expression emerges.</p>
+  </div>
+  <div class="vak-level vak-2">
+    <div class="vak-title">Paśyantī · पश्यन्ती · "Seeing"</div>
+    <p style="font-size:13px;color:var(--text-dim);">Pre-verbal vision. Holistic perception — seeing the whole picture before describing it. No grammar, no sequence — just the totality of meaning. Connected to the navel center.</p>
+  </div>
+  <div class="vak-level vak-3">
+    <div class="vak-title">Madhyamā · मध्यमा · "Middle"</div>
+    <p style="font-size:13px;color:var(--text-dim);">Internal speech. The level of mental formation — meaning takes on structure, grammar, and linguistic form. The voice in your head. Connected to the throat center.</p>
+  </div>
+  <div class="vak-level vak-4">
+    <div class="vak-title">Vaikharī · वैखरी · "Manifest"</div>
+    <p style="font-size:13px;color:var(--text-dim);">Physical speech. The audible, embodied expression through the body. Consciousness fully crystallized as sound. Connected to the mouth and lips.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>The Evolution of Mantra</h3>
+  <p>The understanding of mantra underwent one of the most profound shifts in spiritual history — from external prayer to living power.</p>
+
+  <table>
+    <tr><th>Era</th><th>View of Mantra</th><th>Direction</th></tr>
+    <tr><td><strong>Vedic</strong></td><td>Prayer to external gods — transactional</td><td>Outward → upward</td></tr>
+    <tr><td><strong>Upaniṣadic</strong></td><td>Pointer to inner truth — "I am That"</td><td>Outward → inward</td></tr>
+    <tr><td><strong>Tantric</strong></td><td>Living conscious energy — "The divine speaks as me"</td><td>Inward → everywhere</td></tr>
+    <tr><td><strong>Kashmir Shaivism</strong></td><td>The vibration of consciousness itself — "I am the mantra"</td><td>No direction — already here</td></tr>
+  </table>
+
+  <p>In Kashmir Shaivism, each letter of the Sanskrit alphabet is a <em>śakti</em> — a "little mother" (<em>mātṛkā</em>). These letter-energies are the actual building blocks of manifestation. The highest mantra is silence — because silence is Parā Vāk, the supreme level of speech from which all mantras emerge.</p>
+
+  <blockquote>
+    <p>"No tradition has gone into it, to my knowledge, as deeply as Kashmir Shaivism — the reality of the letters, what is this energy of letters which expresses itself in words and eventually as sentences."</p>
+    <cite>— George Barrer</cite>
+  </blockquote>
+</section>
+
+<!-- ═══════════════ SPANDA ═══════════════ -->
+<section class="panel" id="spanda">
+  <div class="section-label">The Pulse of Reality</div>
+  <h2>The Spanda Doctrine</h2>
+  <p><em>Spanda</em> (स्पन्द) means "vibration" or "throb" — but not physical vibration. It is the primordial pulsation of consciousness itself. The dynamic aliveness at the heart of reality. Not movement through space — the vibration of awareness being aware.</p>
+
+  <div class="card" style="text-align:center;padding:32px;margin:24px 0;border-color:var(--gold-dim);">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold);">Reality is not static.</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold);margin-top:4px;">It is a living oscillation.</div>
+  </div>
+
+  <h3>Key Principles</h3>
+  <div class="grid-2">
+    <div class="card"><div class="card-desc">This pulsation exists at every level: cosmic, subtle, and physical. The heartbeat, the breath, the expansion and contraction of the universe — all expressions of Spanda.</div></div>
+    <div class="card"><div class="card-desc">In deep meditation, when the breath becomes extremely subtle, the meditator can directly perceive Spanda as a "vibrationless vibration" — dynamic stillness teeming with infinite potential.</div></div>
+  </div>
+
+  <blockquote>
+    <p>"The state of enlightenment is a dynamic state. This inner joy spills over into the world to where they see the whole world is actually vibrating in this consciousness, which itself is made of pure bliss."</p>
+    <cite>— George Barrer</cite>
+  </blockquote>
+</section>
+
+<!-- ═══════════════ STATES ═══════════════ -->
+<section class="panel" id="states">
+  <div class="section-label">The Screen and Its Projections</div>
+  <h2>Five States of Consciousness</h2>
+
+  <div class="states-grid">
+    <div class="state-card">
+      <h4>Jāgrat</h4>
+      <div style="font-size:11px;color:var(--green);letter-spacing:1px;">WAKING</div>
+      <p style="font-size:12px;margin-top:8px;">Gross perception. The external world projected onto consciousness.</p>
+    </div>
+    <div class="state-card">
+      <h4>Svapna</h4>
+      <div style="font-size:11px;color:var(--purple);letter-spacing:1px;">DREAMING</div>
+      <p style="font-size:12px;margin-top:8px;">Subtle perception. Internal world projected by inner light. Same screen, different film.</p>
+    </div>
+    <div class="state-card" style="background:var(--bg);">
+      <h4 style="color:var(--text-dim);">Suṣupti</h4>
+      <div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">DEEP SLEEP</div>
+      <p style="font-size:12px;margin-top:8px;">Causal void. The projector is off, but the screen still exists. Subtle breath continues.</p>
+    </div>
+  </div>
+
+  <div class="card" style="border-color:var(--gold-dim);background:var(--gold-faint);text-align:center;padding:20px;margin:16px 0;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);">④ Turya — "The Fourth"</div>
+    <p style="font-size:13px;margin-top:6px;">The screen itself. Pure awareness underlying all three states. Experienced in samādhi when breath stops.</p>
+  </div>
+
+  <div class="card" style="border-color:var(--gold-dim);text-align:center;padding:20px;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);">⑤ Turīyātīta — "Beyond the Fourth"</div>
+    <p style="font-size:13px;margin-top:6px;">Turya permanently pervades waking, dreaming, and deep sleep. Full realization. The yogi never loses awareness.</p>
+  </div>
+
+  <blockquote>
+    <p>"The present moment is the eternality of creation."</p>
+    <cite>— George Barrer</cite>
+  </blockquote>
+</section>
+
+<!-- ═══════════════ PRATYABHIJÑĀ ═══════════════ -->
+<section class="panel" id="pratyabhijna">
+  <div class="section-label">The Heart of the Teaching</div>
+  <h2>Pratyabhijñā — Recognition</h2>
+  <p><em>Pratyabhijñā</em> means "re-cognition" — knowing again what was always known. This is the philosophical heart of Kashmir Shaivism and its most revolutionary teaching.</p>
+
+  <div class="card" style="text-align:center;padding:32px;margin:24px 0;border-color:var(--gold-dim);background:var(--gold-faint);">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);line-height:1.5;">You are already Śiva.<br>You have always been Śiva.<br>The only "problem" is that you don't recognize it.</div>
+  </div>
+
+  <h3>The First Experience of Awakening</h3>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Recognition</div>
+      <div class="card-desc">"It was always there. This underlying consciousness that I've been looking for through all these practices was always there. It was never absent."</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Amazement (Camatkāra)</div>
+      <div class="card-desc">Filled with wonder at how it all works — sometimes walking around in a state of intoxication, amazed that this was always happening.</div>
+    </div>
+  </div>
+
+  <blockquote>
+    <p>"The first experience when the dawning of enlightenment happens... the first thing is they realize it was always there."</p>
+    <cite>— George Barrer</cite>
+  </blockquote>
+</section>
+
+<!-- ═══════════════ KUNDALINI ═══════════════ -->
+<section class="panel" id="kundalini">
+  <div class="section-label">The Coiled Power</div>
+  <h2>Kuṇḍalinī</h2>
+  <p>In Kashmir Shaivism, Kuṇḍalinī is understood very differently from popular modern interpretations. It is not something you "raise" through effort — it unfolds naturally through deepening practice.</p>
+
+  <div class="card" style="padding:24px;margin:24px 0;border-color:var(--gold-dim);">
+    <p style="font-size:15px;color:var(--text);"><strong>Kuṇḍalinī rises by itself.</strong> You don't raise it. It rises when the breath naturally stops in deep, one-pointed meditation — through complete surrender. Much of what is popularly called "Kuṇḍalinī experience" is imagination.</p>
+  </div>
+
+  <h3>Three Forms</h3>
+  <div class="grid-3">
+    <div class="card"><div class="card-title">Parā Kuṇḍalinī</div><div class="card-desc">Supreme — the universal creative energy, identical with Śakti herself</div></div>
+    <div class="card"><div class="card-title">Cit Kuṇḍalinī</div><div class="card-desc">Consciousness — the power of awareness moving through the individual</div></div>
+    <div class="card"><div class="card-title">Prāṇa Kuṇḍalinī</div><div class="card-desc">Breath — the subtle energy moving through the body via breath</div></div>
+  </div>
+
+  <blockquote>
+    <p>"Kuṇḍalinī rises not through any particular thing you are doing, but in reaching the state of complete and utter surrender — when the breath stops, then automatically Kuṇḍalinī rises."</p>
+    <cite>— George Barrer</cite>
+  </blockquote>
+</section>
+
+<!-- ═══════════════ BREATH ═══════════════ -->
+<section class="panel" id="breath">
+  <div class="section-label">The Connecting Rod</div>
+  <h2>Prāṇa &amp; Breath</h2>
+  <p>Breath holds a central position in Kashmir Shaivism. Prāṇa Śakti — the energy of breath — was the first manifestation when consciousness spilled over into creation, and therefore the most direct link between individual and universal consciousness.</p>
+
+  <div class="grid-2">
+    <div class="card" style="text-align:center;padding:24px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold);">21,600</div>
+      <div style="font-size:13px;color:var(--text-dim);">breaths per day</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:8px;">One breath every 4 seconds</div>
+    </div>
+    <div class="card" style="text-align:center;padding:24px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold);">10,800</div>
+      <div style="font-size:13px;color:var(--text-dim);">waking opportunities</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:8px;">To reconnect with the essence of consciousness</div>
+    </div>
+  </div>
+
+  <h3>The Junction Points (Madhya)</h3>
+  <p>The key isn't just breath movement — it's the <strong>turning points</strong> where inhalation pauses before exhalation, and vice versa. These gaps are doorways to expanded awareness.</p>
+
+  <blockquote>
+    <p>"The trick is not just in the movement of the breath. The trick is in understanding the turning points where the breath turns around... these junctions are the connecting rod with a much greater reality."</p>
+    <cite>— George Barrer</cite>
+  </blockquote>
+
+  <h3>The Five Prāṇas</h3>
+  <table>
+    <tr><th>Prāṇa</th><th>Function</th><th>Region</th></tr>
+    <tr><td><strong>Prāṇa</strong></td><td>Vitalization / inward breath</td><td>Heart / chest</td></tr>
+    <tr><td><strong>Apāna</strong></td><td>Elimination / downward breath</td><td>Lower abdomen</td></tr>
+    <tr><td><strong>Samāna</strong></td><td>Equalization / digestion</td><td>Navel center</td></tr>
+    <tr><td><strong>Udāna</strong></td><td>Ascent / speech</td><td>Throat</td></tr>
+    <tr><td><strong>Vyāna</strong></td><td>Circulation / pervading</td><td>Entire body</td></tr>
+  </table>
+</section>
+
+<!-- ═══════════════ 118 WORLDS ═══════════════ -->
+<section class="panel" id="worlds">
+  <div class="section-label">Cosmology</div>
+  <h2>The 118 Worlds</h2>
+  <p>Abhinavagupta describes how the 36 tattvas contain 118 different worlds (<em>bhuvanas</em>) — realms of existence, each with its own beings, time-scale, and level of consciousness.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Structure</div>
+      <div class="card-desc">118 worlds fit within the 36 tattvas, contained within 5 egg-shaped layers (brahmāṇḍas). Each world is infinitely larger than the one below.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Our Position</div>
+      <div class="card-desc">16 worlds exist within just the Earth element. Our known universe is approximately world #6 from the bottom. 5 below, 10 above — just in the earth element.</div>
+    </div>
+  </div>
+
+  <h3>Time Across Worlds</h3>
+  <p>Different worlds operate on radically different time scales. Our 1 year = 1 day for a departing soul. At higher levels, thousands of our years may equal a single day. In samādhi, time stops entirely.</p>
+
+  <blockquote>
+    <p>"In the world of Para Śiva, everything I experienced may be just a bubble. One bubble in the great ocean of Para Śiva."</p>
+    <cite>— Abhinavagupta (via George Barrer)</cite>
+  </blockquote>
+
+  <p>Each individual's field extends approximately <strong>80 miles in all directions</strong> — creating overlapping bubbles of awareness. Advanced practitioners can sense the energy in their own bubble and the bubbles of others.</p>
+</section>
+
+<!-- ═══════════════ GLOSSARY ═══════════════ -->
+<section class="panel" id="glossary">
+  <div class="section-label">Reference</div>
+  <h2>Glossary of Key Terms</h2>
+
+  <details><summary>A</summary><div class="detail-body">
+    <table>
+      <tr><td><strong>Abhāsa</strong> · आभास</td><td>Appearance / manifestation — how consciousness projects itself as the world</td></tr>
+      <tr><td><strong>Abhinavagupta</strong></td><td>(~950–1020 CE) Greatest philosopher-sage. Author of Tantrāloka.</td></tr>
+      <tr><td><strong>Ānanda</strong> · आनन्द</td><td>Bliss / divine fullness</td></tr>
+      <tr><td><strong>Anupāya</strong> · अनुपाय</td><td>"No means" — spontaneous recognition</td></tr>
+      <tr><td><strong>Āṇava Mala</strong> · आणव मल</td><td>Fundamental impurity — sense of smallness and incompleteness</td></tr>
+      <tr><td><strong>Avasthā</strong> · अवस्था</td><td>State — particularly states of consciousness</td></tr>
+    </table>
+  </div></details>
+
+  <details><summary>B–C</summary><div class="detail-body">
+    <table>
+      <tr><td><strong>Bhairava</strong> · भैरव</td><td>Name for Śiva as supreme reality — "one who dispels fear"</td></tr>
+      <tr><td><strong>Bhuvana</strong> · भुवन</td><td>World / realm — the 118 planes of existence</td></tr>
+      <tr><td><strong>Bindu</strong> · बिन्दु</td><td>Point — the concentrated seed of consciousness</td></tr>
+      <tr><td><strong>Camatkāra</strong> · चमत्कार</td><td>Wonder / amazement — divine astonishment at recognition</td></tr>
+      <tr><td><strong>Cit</strong> · चित्</td><td>Pure consciousness — the most fundamental aspect of Śiva</td></tr>
+    </table>
+  </div></details>
+
+  <details><summary>G–K</summary><div class="detail-body">
+    <table>
+      <tr><td><strong>Guṇa</strong> · गुण</td><td>Three qualities: sattva (clarity), rajas (activity), tamas (inertia)</td></tr>
+      <tr><td><strong>Icchā</strong> · इच्छा</td><td>Will / intention — divine power</td></tr>
+      <tr><td><strong>Jñāna</strong> · ज्ञान</td><td>Knowledge — both limited and unlimited</td></tr>
+      <tr><td><strong>Kāla</strong> · काल</td><td>Time — one of the five limitations</td></tr>
+      <tr><td><strong>Kañcuka</strong> · कञ्चुक</td><td>Covering / cloak — the five limitations</td></tr>
+      <tr><td><strong>Krama</strong> · क्रम</td><td>Sequence — system of temporal unfolding</td></tr>
+      <tr><td><strong>Kriyā</strong> · क्रिया</td><td>Action / creative power</td></tr>
+      <tr><td><strong>Kula</strong> · कुल</td><td>Totality — the whole system as one</td></tr>
+      <tr><td><strong>Kuṇḍalinī</strong> · कुण्डलिनी</td><td>The coiled cosmic energy within each individual</td></tr>
+    </table>
+  </div></details>
+
+  <details><summary>M–N</summary><div class="detail-body">
+    <table>
+      <tr><td><strong>Madhya</strong> · मध्य</td><td>Center / junction point — doorway to expanded awareness</td></tr>
+      <tr><td><strong>Mala</strong> · मल</td><td>Impurity — the three conditions creating limitation</td></tr>
+      <tr><td><strong>Mālinī</strong> · मालिनी</td><td>Mixed Sanskrit alphabet — representing interwoven consciousness</td></tr>
+      <tr><td><strong>Mantra</strong> · मन्त्र</td><td>Sacred sound — actual building blocks of reality</td></tr>
+      <tr><td><strong>Mātṛkā</strong> · मातृका</td><td>"Little mothers" — alphabet letters as creative energies</td></tr>
+      <tr><td><strong>Māyā</strong> · माया</td><td>The measurer — power creating differentiation (not illusion)</td></tr>
+      <tr><td><strong>Nāda</strong> · नाद</td><td>Primordial sound current — wave-aspect of consciousness</td></tr>
+      <tr><td><strong>Nara</strong> · नर</td><td>Human / individual — third of the Trika</td></tr>
+      <tr><td><strong>Niyati</strong> · नियति</td><td>Causality / spatial limitation</td></tr>
+    </table>
+  </div></details>
+
+  <details><summary>P–S</summary><div class="detail-body">
+    <table>
+      <tr><td><strong>Parā</strong> · परा</td><td>Supreme — highest level of speech and consciousness</td></tr>
+      <tr><td><strong>Prakāśa</strong> · प्रकाश</td><td>Light — luminous aspect of consciousness (Śiva)</td></tr>
+      <tr><td><strong>Prakṛti</strong> · प्रकृति</td><td>Primordial nature — root of material existence</td></tr>
+      <tr><td><strong>Prāṇa</strong> · प्राण</td><td>Breath / life force — connecting link to the divine</td></tr>
+      <tr><td><strong>Pratyabhijñā</strong> · प्रत्यभिज्ञा</td><td>Recognition — liberation through recognizing what you are</td></tr>
+      <tr><td><strong>Puruṣa</strong> · पुरुष</td><td>Individual soul</td></tr>
+      <tr><td><strong>Sādhanā</strong> · साधना</td><td>Spiritual practice</td></tr>
+      <tr><td><strong>Samādhi</strong> · समाधि</td><td>Sameness of awareness — complete absorption</td></tr>
+      <tr><td><strong>Śakti</strong> · शक्ति</td><td>Energy / power — dynamic feminine consciousness</td></tr>
+      <tr><td><strong>Śaktipāta</strong> · शक्तिपात</td><td>Descent of grace — the awakening touch</td></tr>
+      <tr><td><strong>Śiva</strong> · शिव</td><td>The Auspicious One — pure consciousness</td></tr>
+      <tr><td><strong>Spanda</strong> · स्पन्द</td><td>Vibration / pulse — the primordial throb of consciousness</td></tr>
+      <tr><td><strong>Svātantrya</strong> · स्वातन्त्र्य</td><td>Absolute freedom of consciousness</td></tr>
+    </table>
+  </div></details>
+
+  <details><summary>T–V</summary><div class="detail-body">
+    <table>
+      <tr><td><strong>Tantra</strong> · तन्त्र</td><td>System of knowledge and practice; the texts</td></tr>
+      <tr><td><strong>Tantrāloka</strong> · तन्त्रालोक</td><td>Light on Tantra — Abhinavagupta's magnum opus</td></tr>
+      <tr><td><strong>Tattva</strong> · तत्त्व</td><td>That-ness / principle — the 36 building blocks</td></tr>
+      <tr><td><strong>Trika</strong> · त्रिक</td><td>Threefold — the structural principle</td></tr>
+      <tr><td><strong>Turya</strong> · तुर्य</td><td>The Fourth — pure awareness underlying all states</td></tr>
+      <tr><td><strong>Turīyātīta</strong> · तुरीयातीत</td><td>Beyond the Fourth — full permanent realization</td></tr>
+      <tr><td><strong>Upāya</strong> · उपाय</td><td>Means — the four approaches to realization</td></tr>
+      <tr><td><strong>Vāk</strong> · वाक्</td><td>Speech — four levels from silence to sound</td></tr>
+      <tr><td><strong>Vimarśa</strong> · विमर्श</td><td>Self-reflection — consciousness knowing itself (Śakti)</td></tr>
+    </table>
+  </div></details>
+</section>
+
+</main>
+
+<footer>
+  <p>Geography of Consciousness · A Map of Kashmir Shaivism</p>
+  <p style="margin-top:8px;"><a href="https://serjsolarpunk.com" target="_blank" rel="noopener">serjsolarpunk.com</a></p>
+</footer>
+
+<script>
+  // Tab navigation
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      panels.forEach(p => {
+        p.classList.remove('active');
+        if (p.id === target) p.classList.add('active');
+      });
+
+      // Scroll to top of main
+      window.scrollTo({ top: document.querySelector('nav').offsetTop, behavior: 'smooth' });
+    });
+  });
+
+  // Scroll active tab into view
+  const tabScroll = document.querySelector('.tab-scroll');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    });
+  });
+</script>
+
+</body>
+</html>
