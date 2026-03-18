@@ -245,6 +245,9 @@
     .grid-2, .grid-3 { grid-template-columns: 1fr; }
     .tab-scroll { gap: 5px; padding: 10px 0; }
     .tab-btn { padding: 6px 12px; font-size: 11px; }
+    .polarity-visual { flex-direction: column; }
+    .polarity-circle { margin: 0 !important; }
+    .polarity-overlap { position: relative; left: auto; top: auto; transform: none; margin: -20px auto; }
   }
 
   /* CARDS */
@@ -487,6 +490,71 @@
     line-height: 1.8;
   }
 
+  /* ─── SRI YANTRA BACKGROUND ─── */
+  .sri-yantra-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vmin;
+    height: 90vmin;
+    max-width: 800px;
+    max-height: 800px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    animation: yantraFadeIn 3s ease 1s forwards;
+  }
+  @keyframes yantraFadeIn {
+    to { opacity: 1; }
+  }
+  .sri-yantra-bg svg {
+    width: 100%;
+    height: 100%;
+  }
+  .yantra-outer-circle {
+    animation: yantraPulse 8s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .yantra-triangles {
+    animation: yantraBreath 6s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .yantra-inner-triangles {
+    animation: yantraBreath 6s ease-in-out infinite 0.5s;
+    transform-origin: center;
+  }
+  .yantra-petals-8 {
+    animation: yantraRotateSlow 120s linear infinite;
+    transform-origin: 150px 150px;
+  }
+  .yantra-petals-16 {
+    animation: yantraRotateSlow 180s linear infinite reverse;
+    transform-origin: 150px 150px;
+  }
+  .yantra-bindu {
+    animation: binduPulse 4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes yantraPulse {
+    0%, 100% { opacity: 0.06; transform: scale(1); }
+    50% { opacity: 0.10; transform: scale(1.008); }
+  }
+  @keyframes yantraBreath {
+    0%, 100% { opacity: 0.07; transform: scale(1); }
+    50% { opacity: 0.12; transform: scale(1.012); }
+  }
+  @keyframes yantraRotateSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes binduPulse {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(1.3); }
+  }
+  /* Ensure content sits above yantra */
+  header, nav, main, footer { position: relative; z-index: 1; }
+
   /* SCROLL HINT */
   .scroll-hint {
     text-align: center;
@@ -495,14 +563,179 @@
     font-size: 11px;
     letter-spacing: 2px;
   }
+
+  /* ─── ENHANCED VĀK PIPELINE ─── */
+  .vak-pipeline { position: relative; margin: 32px 0; padding-left: 0; }
+  .vak-step { display: grid; grid-template-columns: 50px 1fr 160px; gap: 16px; align-items: start; margin-bottom: 0; position: relative; }
+  @media (max-width: 640px) { .vak-step { grid-template-columns: 40px 1fr; } .vak-meta { display: none; } }
+  .vak-num { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; margin-top: 16px; }
+  .vak-box { border-radius: 10px; padding: 20px 24px; position: relative; }
+  .vak-box-title { font-size: 16px; font-weight: 600; letter-spacing: 1px; margin-bottom: 4px; }
+  .vak-box-sanskrit { font-size: 12px; margin-bottom: 8px; }
+  .vak-box-desc { font-size: 13px; line-height: 1.7; }
+  .vak-box-italic { font-size: 12px; font-style: italic; margin-top: 6px; }
+  .vak-meta { font-size: 11px; color: var(--text-muted); margin-top: 20px; line-height: 1.8; }
+  .vak-connector { display: flex; justify-content: center; padding: 4px 0 4px 20px; }
+  .vak-connector-arrow { width: 1px; height: 24px; position: relative; }
+  .vak-connector-arrow::after { content: '▼'; position: absolute; bottom: -4px; left: -5px; font-size: 8px; }
+  .vak-gradient-label { position: absolute; left: -60px; top: 50%; transform: translateY(-50%) rotate(-90deg); font-size: 10px; letter-spacing: 3px; font-weight: 500; white-space: nowrap; }
+  @media (max-width: 768px) { .vak-gradient-label { display: none; } }
+  .vak-bottom-note { text-align: center; margin-top: 24px; font-size: 12px; font-style: italic; color: var(--text-muted); }
+
+  /* ─── ENHANCED UPĀYAS CONCENTRIC ─── */
+  .upayas-visual { position: relative; width: 100%; max-width: 480px; margin: 32px auto; aspect-ratio: 1; }
+  .upaya-ring { position: absolute; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .upaya-ring-label { font-size: 13px; font-weight: 600; letter-spacing: 1px; }
+  .upaya-ring-sub { font-size: 10px; margin-top: 2px; }
+  .upaya-ring-italic { font-size: 9px; font-style: italic; margin-top: 2px; }
+  .upayas-axis { position: absolute; right: -80px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px 0; }
+  @media (max-width: 640px) { .upayas-axis { display: none; } }
+  .upayas-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+  @media (max-width: 640px) { .upayas-detail-grid { grid-template-columns: 1fr; } }
+  .upaya-detail { border-radius: 8px; padding: 16px; }
+  .upaya-detail-title { font-size: 12px; font-weight: 600; letter-spacing: 1px; margin-bottom: 4px; }
+  .upaya-detail-system { font-size: 11px; margin-bottom: 6px; }
+  .upaya-detail-desc { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+
+  /* ─── ENHANCED MALAS ─── */
+  .mala-section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; margin-top: 12px; margin-bottom: 4px; text-transform: uppercase; }
+  .mala-experience { font-size: 14px; font-style: italic; }
+  .mala-mechanism { font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+  .mala-depth-indicator { position: absolute; right: -40px; top: 10%; bottom: 10%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+  @media (max-width: 768px) { .mala-depth-indicator { display: none; } }
+
+  /* ─── ENHANCED STATES ─── */
+  .states-screen { border: 1px solid var(--gold-dim); border-radius: 12px; padding: 16px; background: var(--gold-faint); margin: 24px 0; }
+  .states-screen-label { text-align: center; font-size: 11px; letter-spacing: 3px; color: var(--gold); opacity: 0.5; margin-bottom: 12px; }
+  .states-panels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .states-panels { grid-template-columns: 1fr; } }
+  .state-panel { border-radius: 8px; padding: 16px; text-align: center; }
+  .state-panel-scene { height: 60px; border-radius: 6px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; opacity: 0.4; }
+  .state-panel h4 { font-family: 'Cormorant Garamond', serif; font-size: 18px; margin-bottom: 2px; }
+  .state-panel-sanskrit { font-size: 11px; letter-spacing: 1px; margin-bottom: 8px; }
+  .state-panel p { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+
+  /* ─── POLARITY VISUAL ─── */
+  .polarity-visual { display: flex; align-items: center; justify-content: center; gap: 0; margin: 32px 0; position: relative; flex-wrap: wrap; }
+  .polarity-circle { width: 220px; height: 220px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; }
+  .polarity-overlap { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2; background: var(--bg); padding: 8px 16px; border-radius: 8px; }
+  @media (max-width: 640px) { .polarity-circle { width: 160px; height: 160px; } }
 </style>
 </head>
 <body>
 
+<!-- Animated Sri Yantra Background — coordinates from Bhaskar Tripathi's mathematical model -->
+<div class="sri-yantra-bg" aria-hidden="true">
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="yantraGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C29B74" stop-opacity="0.08"/>
+      <stop offset="60%" stop-color="#8B74C2" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#8B74C2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient glow -->
+  <circle cx="150" cy="150" r="148" fill="url(#yantraGlow)"/>
+
+  <!-- Bhupura (outer square gate) -->
+  <g class="yantra-outer-circle" style="opacity:0.05;">
+    <rect x="30" y="30" width="240" height="240" rx="2" fill="none" stroke="#C29B74" stroke-width="0.8"/>
+    <rect x="26" y="26" width="248" height="248" rx="2" fill="none" stroke="#C29B74" stroke-width="0.5"/>
+    <!-- Gate extensions -->
+    <line x1="26" y1="130" x2="15" y2="130" stroke="#C29B74" stroke-width="0.5"/>
+    <line x1="26" y1="170" x2="15" y2="170" stroke="#C29B74" stroke-width="0.5"/>
+    <line x1="15" y1="130" x2="15" y2="170" stroke="#C29B74" stroke-width="0.5"/>
+    <line x1="274" y1="130" x2="285" y2="130" stroke="#C29B74" stroke-width="0.5"/>
+    <line x1="274" y1="170" x2="285" y2="170" stroke="#C29B74" stroke-width="0.5"/>
+    <line x1="285" y1="130" x2="285" y2="170" stroke="#C29B74" stroke-width="0.5"/>
+    <line x1="130" y1="26" x2="130" y2="15" stroke="#C29B74" stroke-width="0.5"/>
+    <line x1="170" y1="26" x2="170" y2="15" stroke="#C29B74" stroke-width="0.5"/>
+    <line x1="130" y1="15" x2="170" y2="15" stroke="#C29B74" stroke-width="0.5"/>
+    <line x1="130" y1="274" x2="130" y2="285" stroke="#C29B74" stroke-width="0.5"/>
+    <line x1="170" y1="274" x2="170" y2="285" stroke="#C29B74" stroke-width="0.5"/>
+    <line x1="130" y1="285" x2="170" y2="285" stroke="#C29B74" stroke-width="0.5"/>
+  </g>
+
+  <!-- Triple outer circles -->
+  <g class="yantra-outer-circle" style="opacity:0.06;">
+    <circle cx="150" cy="150" r="120" fill="none" stroke="#C29B74" stroke-width="0.6"/>
+    <circle cx="150" cy="150" r="113" fill="none" stroke="#8B74C2" stroke-width="1.2"/>
+    <circle cx="150" cy="150" r="106" fill="none" stroke="#C29B74" stroke-width="0.6"/>
+  </g>
+
+  <!-- 16-petal lotus -->
+  <g class="yantra-petals-16" style="opacity:0.04;">
+    <circle cx="150" cy="150" r="105" fill="none" stroke="#8B74C2" stroke-width="0.3"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(22.5,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(45,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(67.5,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(90,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(112.5,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(135,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(157.5,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(180,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(202.5,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(225,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(247.5,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(270,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(292.5,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(315,150,150)"/>
+    <path d="M150,45 Q155,62 150,80 Q145,62 150,45" fill="none" stroke="#8B74C2" stroke-width="0.4" transform="rotate(337.5,150,150)"/>
+  </g>
+
+  <!-- 8-petal lotus -->
+  <g class="yantra-petals-8" style="opacity:0.05;">
+    <path d="M150,50 Q158,72 150,95 Q142,72 150,50" fill="none" stroke="#74C27E" stroke-width="0.5"/>
+    <path d="M150,50 Q158,72 150,95 Q142,72 150,50" fill="none" stroke="#74C27E" stroke-width="0.5" transform="rotate(45,150,150)"/>
+    <path d="M150,50 Q158,72 150,95 Q142,72 150,50" fill="none" stroke="#74C27E" stroke-width="0.5" transform="rotate(90,150,150)"/>
+    <path d="M150,50 Q158,72 150,95 Q142,72 150,50" fill="none" stroke="#74C27E" stroke-width="0.5" transform="rotate(135,150,150)"/>
+    <path d="M150,50 Q158,72 150,95 Q142,72 150,50" fill="none" stroke="#74C27E" stroke-width="0.5" transform="rotate(180,150,150)"/>
+    <path d="M150,50 Q158,72 150,95 Q142,72 150,50" fill="none" stroke="#74C27E" stroke-width="0.5" transform="rotate(225,150,150)"/>
+    <path d="M150,50 Q158,72 150,95 Q142,72 150,50" fill="none" stroke="#74C27E" stroke-width="0.5" transform="rotate(270,150,150)"/>
+    <path d="M150,50 Q158,72 150,95 Q142,72 150,50" fill="none" stroke="#74C27E" stroke-width="0.5" transform="rotate(315,150,150)"/>
+  </g>
+
+  <!-- Main outer circle -->
+  <circle cx="150" cy="150" r="100" fill="none" stroke="#C29B74" stroke-width="0.6" class="yantra-outer-circle" style="opacity:0.08;"/>
+
+  <!-- 9 Interlocking Triangles — precise coordinates from Kulaichev/Tripathi mathematical model -->
+  <!-- 5 Downward-pointing triangles (Śakti) -->
+  <g class="yantra-triangles">
+    <!-- D1: Outermost downward -->
+    <polygon points="53.66,123.21 150,250 246.34,123.21" fill="none" stroke="#C29B74" stroke-width="0.5"/>
+    <!-- D2 -->
+    <polygon points="81.00,103.12 150,220.04 219.02,103.12" fill="none" stroke="#C29B74" stroke-width="0.5"/>
+    <!-- D3 -->
+    <polygon points="90.49,78.10 150,160.66 209.51,78.10" fill="none" stroke="#C29B74" stroke-width="0.5"/>
+    <!-- D4 -->
+    <polygon points="116.35,134.31 150,197.92 183.65,134.31" fill="none" stroke="#C29B74" stroke-width="0.5"/>
+    <!-- D5: Innermost downward -->
+    <polygon points="124.61,144.80 150,174.25 175.39,144.80" fill="none" stroke="#C29B74" stroke-width="0.5"/>
+  </g>
+
+  <!-- 4 Upward-pointing triangles (Śiva) -->
+  <g class="yantra-inner-triangles">
+    <!-- U1: Outermost upward -->
+    <polygon points="52.98,174.25 150,50 247.02,174.25" fill="none" stroke="#8B74C2" stroke-width="0.5"/>
+    <!-- U2 -->
+    <polygon points="78.26,197.92 150,78.10 221.74,197.92" fill="none" stroke="#8B74C2" stroke-width="0.5"/>
+    <!-- U3 -->
+    <polygon points="98.72,220.04 150,123.21 201.28,220.04" fill="none" stroke="#8B74C2" stroke-width="0.5"/>
+    <!-- U4: Innermost upward -->
+    <polygon points="114.95,160.66 150,103.12 185.05,160.66" fill="none" stroke="#8B74C2" stroke-width="0.5"/>
+  </g>
+
+  <!-- Central Bindu -->
+  <circle cx="150" cy="150" r="2.5" fill="#C29B74" class="yantra-bindu"/>
+</svg>
+</div>
+
 <header>
-  <div class="site-label">The Mystical Geography of Awareness</div>
   <h1>Geography of Consciousness</h1>
-  <p class="subtitle">A Complete Map of Kashmir Shaivism</p>
+  <p class="subtitle">A complete map of Kashmir Shaivism</p>
+  <p style="margin-top:14px; font-size:13px; color:var(--text-dim); letter-spacing:1px;">by <a href="https://serjsolarpunk.com" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-dim); transition:border-color 0.3s;">Serj Solarpunk</a></p>
 </header>
 
 <nav>
@@ -636,7 +869,7 @@
       <div class="detail-body">
         <p>The infinite, unchanging ground of all reality. Consciousness before it becomes conscious of anything. The ocean before any wave. The screen on which all experience is projected. The light by which all dreams are seen.</p>
         <p><strong>Prakāśa</strong> = pure luminosity, illumination. Without this light, nothing could be known or experienced.</p>
-        <blockquote><p>"In the beginning there was only consciousness — an ocean with tides moving in huge fluctuations, but the ocean hadn't risen up into any waves. There wasn't even the concept of I-ness."</p><cite>— George Barrer</cite></blockquote>
+        <blockquote><p>"Citi — universal consciousness — is the cause of the creation, maintenance, and dissolution of the universe."</p><cite>— Kṣemarāja, Pratyabhijñā Hṛdayam, Sūtra 1</cite></blockquote>
       </div>
     </details>
 
@@ -752,8 +985,8 @@
   </div>
 
   <blockquote>
-    <p>"How does an ocean become a drop? That's the question."</p>
-    <cite>— George Barrer</cite>
+    <p>"The being of all things that are recognized in awareness in turn depends on awareness."</p>
+    <cite>— Utpaladeva, Īśvara Pratyabhijñā Kārikā, I.5.7</cite>
   </blockquote>
 </section>
 
@@ -763,43 +996,46 @@
   <h2>Prakāśa &amp; Vimarśa</h2>
   <p>This is the single most important conceptual pair in all of Kashmir Shaivism — the two inseparable aspects of consciousness.</p>
 
-  <div class="grid-2" style="margin:32px 0;">
-    <div class="card" style="border-color:var(--gold-dim);">
-      <div class="card-title" style="font-size:24px;">Śiva</div>
-      <div class="card-sanskrit">PRAKĀŚA · प्रकाश</div>
-      <div class="divider" style="margin:12px 0;width:40px;background:var(--gold-dim);"></div>
-      <div class="card-desc">The Light of Consciousness. The sheer radiance that illuminates all experience. The screen on which everything is projected. The light you see your dreams by — even in a dark room with eyes closed.</div>
-      <p style="font-size:12px;color:var(--text-muted);margin-top:12px;font-style:italic;">Passive, unchanging, luminous ground</p>
+  <!-- Venn-style polarity visual -->
+  <div class="polarity-visual">
+    <div class="polarity-circle" style="border:1.5px solid var(--gold-dim);background:var(--gold-faint);margin-right:-40px;z-index:1;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);font-weight:600;">ŚIVA</div>
+      <div style="font-size:13px;color:var(--gold);letter-spacing:2px;margin:4px 0;">PRAKĀŚA</div>
+      <div style="width:40px;height:1px;background:var(--gold-dim);margin:6px auto;"></div>
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.5;">The Light<br>of Consciousness</div>
+      <div style="font-size:10px;color:var(--text-muted);font-style:italic;margin-top:6px;">Illuminates<br>all experience</div>
     </div>
-    <div class="card" style="border-color:var(--purple-dim);">
-      <div class="card-title" style="color:var(--purple);font-size:24px;">Śakti</div>
-      <div class="card-sanskrit">VIMARŚA · विमर्श</div>
-      <div class="divider" style="margin:12px 0;width:40px;background:var(--purple-dim);"></div>
-      <div class="card-desc">Self-Reflective Awareness. The power of consciousness to know itself — to turn back and recognize "I am." Without Vimarśa, Prakāśa would be a mirror reflecting nothing — luminous but inert.</div>
-      <p style="font-size:12px;color:var(--text-muted);margin-top:12px;font-style:italic;">Dynamic, active, self-recognizing power</p>
+    <div class="polarity-overlap">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#fff;font-weight:600;">SPANDA</div>
+      <div style="font-size:9px;color:var(--text-dim);">The Pulse</div>
+      <div style="font-size:8px;color:var(--text-muted);">where light meets<br>self-recognition</div>
     </div>
-  </div>
-
-  <div class="card" style="text-align:center;padding:24px;border-color:var(--gold-dim);background:var(--gold-faint);">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);margin-bottom:8px;">SPANDA</div>
-    <div style="font-size:13px;color:var(--text-dim);">Where light meets self-recognition — the primordial pulse</div>
-    <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">They are one, not two. Like the sun and its light. Like fire and its heat.</div>
+    <div class="polarity-circle" style="border:1.5px solid var(--purple-dim);background:var(--purple-faint);margin-left:-40px;z-index:1;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--purple);font-weight:600;">ŚAKTI</div>
+      <div style="font-size:13px;color:var(--purple);letter-spacing:2px;margin:4px 0;">VIMARŚA</div>
+      <div style="width:40px;height:1px;background:var(--purple-dim);margin:6px auto;"></div>
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.5;">Self-Reflective<br>Awareness</div>
+      <div style="font-size:10px;color:var(--text-muted);font-style:italic;margin-top:6px;">Makes consciousness<br>conscious</div>
+    </div>
   </div>
 
   <div class="grid-2" style="margin-top:24px;">
-    <div class="card" style="text-align:center;">
+    <div class="card" style="text-align:center;border-color:var(--gold-dim);">
       <p style="font-size:13px;color:var(--gold);">Prakāśa without Vimarśa =</p>
       <p style="font-size:13px;font-style:italic;">Light with no one to see it</p>
     </div>
-    <div class="card" style="text-align:center;">
+    <div class="card" style="text-align:center;border-color:var(--purple-dim);">
       <p style="font-size:13px;color:var(--purple);">Vimarśa without Prakāśa =</p>
       <p style="font-size:13px;font-style:italic;">Seeing with nothing to illuminate</p>
     </div>
   </div>
 
+  <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:20px;">Like the sun and its light · Like fire and its heat · Like a word and its meaning</p>
+  <p style="text-align:center;font-size:11px;color:var(--text-muted);font-style:italic;">They are one, not two — inseparable aspects of a single reality</p>
+
   <blockquote>
-    <p>"Without Śakti, there would be no Śiva. Without this ability of Śiva's consciousness to rise up in this feminine way and reflect on itself, there would be no Śiva."</p>
-    <cite>— George Barrer</cite>
+    <p>"Śiva without Śakti is unable to do anything. It is Śakti who bestows her own nature of consciousness on what would otherwise be inert."</p>
+    <cite>— Abhinavagupta, Parātrīśikā Vivaraṇa</cite>
   </blockquote>
 </section>
 
@@ -820,8 +1056,8 @@
   </div>
 
   <blockquote>
-    <p>"We are continually creating, maintaining, and destroying our own reality 24/7."</p>
-    <cite>— George Barrer</cite>
+    <p>"He himself, the one Lord, performs the five acts of creation, sustenance, dissolution, concealing, and revealing grace."</p>
+    <cite>— Kṣemarāja, Pratyabhijñā Hṛdayam, Sūtra 10</cite>
   </blockquote>
 </section>
 
@@ -831,31 +1067,40 @@
   <h2>Five Śaktis → Five Kañcukas</h2>
   <p>The five fundamental powers of consciousness — and how Māyā contracts each one into the limited experience of being an individual.</p>
 
+  <!-- Column headers -->
+  <div class="contraction-row" style="margin-bottom:8px;border:none;padding:0;">
+    <div style="text-align:center;"><div style="font-size:13px;font-weight:600;letter-spacing:2px;color:var(--gold);">DIVINE POWER</div><div style="font-size:9px;color:var(--text-muted);letter-spacing:1px;">(Unlimited)</div></div>
+    <div style="text-align:center;font-size:13px;font-weight:600;letter-spacing:2px;color:var(--purple);">MĀYĀ</div>
+    <div style="text-align:center;"><div style="font-size:13px;font-weight:600;letter-spacing:2px;color:var(--green);">LIMITATION</div><div style="font-size:9px;color:var(--text-muted);letter-spacing:1px;">(Limited experience)</div></div>
+  </div>
+
   <div class="contraction-row">
     <div class="c-box c-divine"><div class="c-title">CIT ŚAKTI</div><div class="c-sub">Eternality · Pure Awareness</div></div>
-    <div class="c-arrow">→ Māyā →</div>
+    <div class="c-arrow">→ contracts →</div>
     <div class="c-box c-limited"><div class="c-title">KĀLA</div><div class="c-sub">Time-bound · "I was born, I'll die"</div></div>
   </div>
   <div class="contraction-row">
     <div class="c-box c-divine"><div class="c-title">ĀNANDA ŚAKTI</div><div class="c-sub">Fullness · Perfect Bliss</div></div>
-    <div class="c-arrow">→ Māyā →</div>
+    <div class="c-arrow">→ contracts →</div>
     <div class="c-box c-limited"><div class="c-title">RĀGA</div><div class="c-sub">Desire · "I want, I lack"</div></div>
   </div>
   <div class="contraction-row">
     <div class="c-box c-divine"><div class="c-title">ICCHĀ ŚAKTI</div><div class="c-sub">Omnipresence · Free Will</div></div>
-    <div class="c-arrow">→ Māyā →</div>
+    <div class="c-arrow">→ contracts →</div>
     <div class="c-box c-limited"><div class="c-title">NIYATI</div><div class="c-sub">Causality · "I'm stuck here"</div></div>
   </div>
   <div class="contraction-row">
     <div class="c-box c-divine"><div class="c-title">JÑĀNA ŚAKTI</div><div class="c-sub">Omniscience · All-Knowing</div></div>
-    <div class="c-arrow">→ Māyā →</div>
+    <div class="c-arrow">→ contracts →</div>
     <div class="c-box c-limited"><div class="c-title">VIDYĀ</div><div class="c-sub">Limited knowing · "I know so little"</div></div>
   </div>
   <div class="contraction-row">
     <div class="c-box c-divine"><div class="c-title">KRIYĀ ŚAKTI</div><div class="c-sub">Omnipotence · Unlimited Action</div></div>
-    <div class="c-arrow">→ Māyā →</div>
+    <div class="c-arrow">→ contracts →</div>
     <div class="c-box c-limited"><div class="c-title">KALĀ</div><div class="c-sub">Limited agency · "I can only do so much"</div></div>
   </div>
+
+  <p style="text-align:center;font-size:11px;color:var(--text-muted);font-style:italic;margin-top:24px;">The Kañcukas are compression filters applied to infinite consciousness → creating the experience of being a limited individual</p>
 </section>
 
 <!-- ═══════════════ FOUR UPAYAS ═══════════════ -->
@@ -864,35 +1109,71 @@
   <h2>The Four Upāyas</h2>
   <p>Four progressive approaches to recognizing your true nature — from the most structured to the most spontaneous.</p>
 
-  <details>
-    <summary><span class="tag tag-green">ĀṆAVOPĀYA</span> &nbsp; The Individual Means — Spanda System</summary>
-    <div class="detail-body">
-      <p>For those experiencing strong differentiation. The most structured path, using external supports as bridges to inner experience: mantra recitation, breath awareness, study of sacred texts, concentration practices, physical yoga, ritual.</p>
-      <blockquote><p>"The practices within this first means give us a glimpse behind the state of differentiation that we're caught up in."</p><cite>— George Barrer</cite></blockquote>
+  <!-- Concentric circles visual -->
+  <div style="position:relative;max-width:560px;margin:32px auto;">
+    <div style="position:relative;width:100%;padding-bottom:100%;">
+      <!-- Outermost ring: Anavopaya -->
+      <div style="position:absolute;inset:0;border-radius:50%;border:1px solid var(--green-dim);background:rgba(116,194,126,0.02);display:flex;align-items:flex-start;justify-content:center;padding-top:10%;">
+        <div style="text-align:center;">
+          <div style="font-size:14px;font-weight:600;color:var(--green);letter-spacing:1px;">ĀṆAVOPĀYA</div>
+          <div style="font-size:10px;color:var(--text-dim);">The Individual Means</div>
+          <div style="font-size:9px;color:var(--text-muted);font-style:italic;">Mantra · breath · study · ritual</div>
+        </div>
+      </div>
+      <!-- Second ring: Shaktopaya -->
+      <div style="position:absolute;inset:14%;border-radius:50%;border:1px solid var(--purple-dim);background:rgba(139,116,194,0.02);display:flex;align-items:flex-start;justify-content:center;padding-top:12%;">
+        <div style="text-align:center;">
+          <div style="font-size:13px;font-weight:600;color:var(--purple);letter-spacing:1px;">ŚĀKTOPĀYA</div>
+          <div style="font-size:10px;color:var(--text-dim);">The Energy Means</div>
+          <div style="font-size:9px;color:var(--text-muted);font-style:italic;">Contemplation · subtle energy</div>
+        </div>
+      </div>
+      <!-- Third ring: Shambhavopaya -->
+      <div style="position:absolute;inset:28%;border-radius:50%;border:1px solid var(--gold-dim);background:rgba(194,155,116,0.02);display:flex;align-items:flex-start;justify-content:center;padding-top:14%;">
+        <div style="text-align:center;">
+          <div style="font-size:13px;font-weight:600;color:var(--gold);letter-spacing:1px;">ŚĀMBHAVOPĀYA</div>
+          <div style="font-size:10px;color:var(--text-dim);">The Divine Means</div>
+          <div style="font-size:9px;color:var(--text-muted);font-style:italic;">Subtle observation of awareness</div>
+        </div>
+      </div>
+      <!-- Center: Anupaya -->
+      <div style="position:absolute;inset:40%;border-radius:50%;border:2px solid var(--gold);background:var(--gold-faint);display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);opacity:0.4;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:600;color:var(--gold);letter-spacing:1px;">ANUPĀYA</div>
+        <div style="font-size:9px;color:var(--text-dim);">No Means</div>
+        <div style="font-size:8px;color:var(--text-muted);font-style:italic;">Pure Grace</div>
+      </div>
     </div>
-  </details>
+    <!-- Side labels -->
+    <div style="position:absolute;left:-50px;top:15%;font-size:10px;color:var(--text-muted);letter-spacing:1px;">↑ MORE EFFORT</div>
+    <div style="position:absolute;left:-50px;bottom:15%;font-size:10px;color:var(--gold);letter-spacing:1px;">↓ MORE GRACE</div>
+  </div>
 
-  <details>
-    <summary><span class="tag tag-purple">ŚĀKTOPĀYA</span> &nbsp; The Energy Means — Krama System</summary>
-    <div class="detail-body">
-      <p>The path of Śakti — energy. The practitioner enters meditation easily, needing fewer supports. Working with the subtle energy of awareness itself, contemplation of philosophical truths, the energy behind mantra rather than its repetition, absorption through music or beauty.</p>
+  <!-- Detail cards -->
+  <div class="upayas-detail-grid">
+    <div class="upaya-detail" style="border:1px solid var(--green-dim);background:rgba(116,194,126,0.04);">
+      <div class="upaya-detail-title" style="color:var(--green);">ĀṆAVOPĀYA</div>
+      <div class="upaya-detail-system" style="color:var(--text-dim);">System: <strong style="color:var(--green);">Spanda</strong> · Most structured</div>
+      <div class="upaya-detail-desc">For those experiencing strong differentiation. Uses external supports as bridges: mantra recitation, breath awareness, study of sacred texts, concentration, physical yoga, ritual.</div>
+      <blockquote style="margin-top:12px;"><p>"By fixing the mind on the inner fire rising through the breath channel, the limited being attains the nature of Bhairava."</p><cite>— Vijñāna Bhairava Tantra, verse 67</cite></blockquote>
     </div>
-  </details>
-
-  <details>
-    <summary><span class="tag tag-gold">ŚĀMBHAVOPĀYA</span> &nbsp; The Divine Means — Pratyabhijñā System</summary>
-    <div class="detail-body">
-      <p>Awareness is so expanded that virtually no technique is needed. There is still some process, but it's extremely subtle — simply observing the activity of the five senses and diving into awareness.</p>
+    <div class="upaya-detail" style="border:1px solid var(--purple-dim);background:rgba(139,116,194,0.04);">
+      <div class="upaya-detail-title" style="color:var(--purple);">ŚĀKTOPĀYA</div>
+      <div class="upaya-detail-system" style="color:var(--text-dim);">System: <strong style="color:var(--purple);">Krama</strong> · Fewer supports</div>
+      <div class="upaya-detail-desc">The path of energy. Working with the subtle energy of awareness itself — contemplation of philosophical truths, the energy behind mantra rather than its repetition, absorption through music or beauty.</div>
     </div>
-  </details>
-
-  <details>
-    <summary><span class="tag tag-gold">ANUPĀYA</span> &nbsp; No Means — Beyond All Systems</summary>
-    <div class="detail-body">
-      <p>Literally "no means." Spontaneous self-recognition without any practice. By grace alone — the individual simply wakes up.</p>
-      <blockquote><p>"Suddenly this dawning happens automatically without having done anything... and all of a sudden their life has changed."</p><cite>— George Barrer</cite></blockquote>
+    <div class="upaya-detail" style="border:1px solid var(--gold-dim);background:var(--gold-faint);">
+      <div class="upaya-detail-title" style="color:var(--gold);">ŚĀMBHAVOPĀYA</div>
+      <div class="upaya-detail-system" style="color:var(--text-dim);">System: <strong style="color:var(--gold);">Pratyabhijñā</strong> · Almost no technique</div>
+      <div class="upaya-detail-desc">Awareness is so expanded that virtually no technique is needed. Simply observing the activity of the five senses and diving into awareness. Pure observation.</div>
     </div>
-  </details>
+    <div class="upaya-detail" style="border:1px solid var(--gold);background:var(--gold-faint);">
+      <div class="upaya-detail-title" style="color:var(--gold);">ANUPĀYA</div>
+      <div class="upaya-detail-system" style="color:var(--text-dim);">System: <strong style="color:var(--gold);">Beyond all</strong> · No practice</div>
+      <div class="upaya-detail-desc">Literally "no means." Spontaneous self-recognition without any practice. By grace alone — the individual simply wakes up.</div>
+      <blockquote style="margin-top:12px;"><p>"When the mind of the aspirant is dissolved by the intense grace of the Lord, then he attains that highest state of Śiva spontaneously, without any means."</p><cite>— Swami Lakshman Joo, Kashmir Shaivism: The Secret Supreme</cite></blockquote>
+    </div>
+  </div>
 
   <div class="card" style="text-align:center;margin-top:24px;padding:24px;">
     <p style="font-style:italic;color:var(--text-dim);font-family:'Cormorant Garamond',serif;font-size:17px;">"How long should I do this practice?"</p>
@@ -907,20 +1188,56 @@
   <h2>The Three Malas</h2>
   <p>Three existential conditions that distort the experience of unlimited consciousness into contracted, limited experience. Not physical impurities — ways consciousness experiences limitation.</p>
 
-  <div class="mala-outer">
-    <div style="font-size:16px;font-weight:600;color:#C27474;font-family:'Cormorant Garamond',serif;">Kārma Mala — Conditioning from Action</div>
-    <p style="font-size:13px;color:var(--text-dim);margin:8px 0;">"I am the doer and must suffer or enjoy the results." Accumulated impressions from past actions shape present experience. <strong>Maps to:</strong> behavioral pattern loops.</p>
-    <div class="mala-mid">
-      <div style="font-size:16px;font-weight:600;color:var(--gold);font-family:'Cormorant Garamond',serif;">Māyīya Mala — Perception of Difference</div>
-      <p style="font-size:13px;color:var(--text-dim);margin:8px 0;">"Everything is separate from me." Subject/object duality perceived as fundamental reality. <strong>Maps to:</strong> perceptual fragmentation.</p>
-      <div class="mala-inner">
-        <div style="font-size:18px;font-weight:600;color:var(--gold);font-family:'Cormorant Garamond',serif;">Āṇava Mala</div>
-        <div style="font-size:12px;color:var(--text-dim);margin:4px 0;">THE DEEPEST ROOT</div>
-        <div style="font-size:15px;color:var(--text);margin-top:8px;">"I am limited. I am incomplete. I am not enough."</div>
-        <div style="font-size:11px;color:var(--text-muted);margin-top:8px;">The fundamental forgetting of who you are — identity distortion.<br>From this, the other two impurities arise.</div>
+  <div style="position:relative;">
+    <div class="mala-outer">
+      <div style="font-size:18px;font-weight:600;color:#C27474;font-family:'Cormorant Garamond',serif;">KĀRMA MALA</div>
+      <div style="font-size:11px;color:#C27474;opacity:0.7;margin-bottom:12px;">कार्म मल · Conditioning from Action</div>
+      <div class="grid-2" style="gap:16px;">
+        <div>
+          <div class="mala-section-label" style="color:#C27474;">EXPERIENCE:</div>
+          <div class="mala-experience" style="color:var(--text-dim);">"I am the doer."<br>"I must reap what I sow."</div>
+        </div>
+        <div>
+          <div class="mala-section-label" style="color:#C27474;">MECHANISM:</div>
+          <div class="mala-mechanism">Accumulated impressions (saṃskāras) from past actions shape present experience across lifetimes.</div>
+          <div class="mala-section-label" style="color:#C27474;margin-top:8px;">MAPS TO:</div>
+          <div class="mala-mechanism">Behavioral pattern loops — "I keep doing the same things"</div>
+        </div>
+      </div>
+
+      <div class="mala-mid">
+        <div style="font-size:17px;font-weight:600;color:var(--gold);font-family:'Cormorant Garamond',serif;">MĀYĪYA MALA</div>
+        <div style="font-size:11px;color:var(--gold);opacity:0.7;margin-bottom:12px;">मायीय मल · Perception of Difference</div>
+        <div class="grid-2" style="gap:16px;">
+          <div>
+            <div class="mala-section-label" style="color:var(--gold);">EXPERIENCE:</div>
+            <div class="mala-experience" style="color:var(--text-dim);">"Everything is separate from me."<br>"I am here. They are there."</div>
+          </div>
+          <div>
+            <div class="mala-section-label" style="color:var(--gold);">MECHANISM:</div>
+            <div class="mala-mechanism">Subject/object duality perceived as fundamental reality.</div>
+            <div class="mala-section-label" style="color:var(--gold);margin-top:8px;">MAPS TO:</div>
+            <div class="mala-mechanism">Perceptual fragmentation — "The world is made of separate things"</div>
+          </div>
+        </div>
+
+        <div class="mala-inner">
+          <div style="font-size:20px;font-weight:600;color:var(--gold);font-family:'Cormorant Garamond',serif;">ĀṆAVA MALA</div>
+          <div style="font-size:10px;color:var(--gold);letter-spacing:2px;margin:4px 0;">आणव मल</div>
+          <div style="width:60px;height:1px;background:var(--gold-dim);margin:10px auto;"></div>
+          <div style="font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:600;">THE DEEPEST ROOT</div>
+          <div style="font-size:16px;color:var(--text);margin-top:12px;line-height:1.8;">"I am limited."<br>"I am incomplete."<br>"I am not enough."</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:12px;font-style:italic;">Identity distortion — the fundamental forgetting of who you are.<br>From this, the other two impurities arise.</div>
+        </div>
       </div>
     </div>
+    <!-- Depth indicator -->
+    <div style="position:absolute;right:-50px;top:5%;font-size:9px;color:#C27474;letter-spacing:1px;">SURFACE</div>
+    <div style="position:absolute;right:-45px;top:15%;bottom:15%;width:1px;background:linear-gradient(to bottom, rgba(194,116,116,0.3), var(--gold-dim));"></div>
+    <div style="position:absolute;right:-50px;bottom:5%;font-size:9px;color:var(--gold);letter-spacing:1px;">DEEPEST</div>
   </div>
+
+  <p style="text-align:center;font-size:11px;color:var(--text-muted);font-style:italic;margin-top:24px;">The Āṇava Mala is the fundamental forgetting — from which the other two impurities arise</p>
 </section>
 
 <!-- ═══════════════ VĀK & MANTRA ═══════════════ -->
@@ -929,22 +1246,66 @@
   <h2>Vāk — The Four Levels of Speech</h2>
   <p>Kashmir Shaivism provides an extraordinarily detailed analysis of speech — not just as communication, but as a fundamental process of manifestation. Speech is how consciousness creates.</p>
 
-  <div class="vak-level vak-1">
-    <div class="vak-title">Parā · परा · "Supreme"</div>
-    <p style="font-size:13px;color:var(--text-dim);">Pure potential. Beyond speech. Silence pregnant with all possibility. Connected to the heart center. The seed state from which all expression emerges.</p>
+  <div class="vak-pipeline" style="margin-left:70px;position:relative;">
+    <span class="vak-gradient-label" style="color:var(--gold);">SUBTLE</span>
+    <span class="vak-gradient-label" style="color:var(--green);top:auto;bottom:15%;transform:translateY(50%) rotate(-90deg);">GROSS</span>
+
+    <!-- Level 1: Para -->
+    <div class="vak-step">
+      <div class="vak-num" style="background:var(--gold-faint);color:var(--gold);border:1px solid var(--gold-dim);">1</div>
+      <div class="vak-box" style="border:1px solid var(--gold-dim);background:var(--gold-faint);">
+        <div class="vak-box-title" style="color:var(--gold);">PARĀ</div>
+        <div class="vak-box-sanskrit" style="color:var(--gold);opacity:0.7;">परा · "Supreme"</div>
+        <div class="vak-box-desc" style="color:var(--text-dim);">Pure potential. Beyond speech. Not even the intention to speak — just infinite possibility resting in silence.</div>
+        <div class="vak-box-italic" style="color:var(--text-muted);">Silence pregnant with all possibility</div>
+      </div>
+      <div class="vak-meta">↳ Heart center<br>↳ Seed state</div>
+    </div>
+
+    <div class="vak-connector"><div class="vak-connector-arrow" style="background:var(--gold-dim);color:var(--purple);">​</div></div>
+
+    <!-- Level 2: Pashyanti -->
+    <div class="vak-step">
+      <div class="vak-num" style="background:var(--purple-faint);color:var(--purple);border:1px solid var(--purple-dim);">2</div>
+      <div class="vak-box" style="border:1px solid var(--purple-dim);background:var(--purple-faint);">
+        <div class="vak-box-title" style="color:var(--purple);">PAŚYANTĪ</div>
+        <div class="vak-box-sanskrit" style="color:var(--purple);opacity:0.7;">पश्यन्ती · "Seeing"</div>
+        <div class="vak-box-desc" style="color:var(--text-dim);">Pre-verbal vision. Holistic perception — seeing the whole picture before describing it. No grammar, no sequence — just the totality of meaning all at once.</div>
+        <div class="vak-box-italic" style="color:var(--text-muted);">Seeing the whole picture before describing it</div>
+      </div>
+      <div class="vak-meta">↳ Navel center<br>↳ No grammar yet</div>
+    </div>
+
+    <div class="vak-connector"><div class="vak-connector-arrow" style="background:var(--purple-dim);color:var(--green);">​</div></div>
+
+    <!-- Level 3: Madhyama -->
+    <div class="vak-step">
+      <div class="vak-num" style="background:rgba(116,194,126,0.1);color:var(--green);border:1px solid var(--green-dim);">3</div>
+      <div class="vak-box" style="border:1px solid var(--green-dim);background:rgba(116,194,126,0.06);">
+        <div class="vak-box-title" style="color:var(--green);">MADHYAMĀ</div>
+        <div class="vak-box-sanskrit" style="color:var(--green);opacity:0.7;">मध्यमा · "Middle"</div>
+        <div class="vak-box-desc" style="color:var(--text-dim);">Internal speech. The level of mental formation — meaning takes on structure, grammar, and linguistic form. The voice in your head.</div>
+        <div class="vak-box-italic" style="color:var(--text-muted);">Grammar, sequence, words forming</div>
+      </div>
+      <div class="vak-meta">↳ Throat center<br>↳ Mental formation</div>
+    </div>
+
+    <div class="vak-connector"><div class="vak-connector-arrow" style="background:var(--green-dim);color:var(--text-muted);">​</div></div>
+
+    <!-- Level 4: Vaikhari -->
+    <div class="vak-step">
+      <div class="vak-num" style="background:rgba(116,194,126,0.06);color:var(--text-dim);border:1px solid rgba(116,194,126,0.2);">4</div>
+      <div class="vak-box" style="border:1px solid rgba(116,194,126,0.15);background:rgba(116,194,126,0.03);">
+        <div class="vak-box-title" style="color:rgba(116,194,126,0.7);">VAIKHARĪ</div>
+        <div class="vak-box-sanskrit" style="color:rgba(116,194,126,0.5);">वैखरी · "Manifest"</div>
+        <div class="vak-box-desc" style="color:var(--text-dim);">Physical speech. The audible, embodied expression through the body. Consciousness fully crystallized as sound.</div>
+        <div class="vak-box-italic" style="color:var(--text-muted);">The spoken word — consciousness fully materialized</div>
+      </div>
+      <div class="vak-meta">↳ Mouth / lips<br>↳ Physical expression</div>
+    </div>
   </div>
-  <div class="vak-level vak-2">
-    <div class="vak-title">Paśyantī · पश्यन्ती · "Seeing"</div>
-    <p style="font-size:13px;color:var(--text-dim);">Pre-verbal vision. Holistic perception — seeing the whole picture before describing it. No grammar, no sequence — just the totality of meaning. Connected to the navel center.</p>
-  </div>
-  <div class="vak-level vak-3">
-    <div class="vak-title">Madhyamā · मध्यमा · "Middle"</div>
-    <p style="font-size:13px;color:var(--text-dim);">Internal speech. The level of mental formation — meaning takes on structure, grammar, and linguistic form. The voice in your head. Connected to the throat center.</p>
-  </div>
-  <div class="vak-level vak-4">
-    <div class="vak-title">Vaikharī · वैखरी · "Manifest"</div>
-    <p style="font-size:13px;color:var(--text-dim);">Physical speech. The audible, embodied expression through the body. Consciousness fully crystallized as sound. Connected to the mouth and lips.</p>
-  </div>
+
+  <p class="vak-bottom-note">Every thought, every perception, every sound — in all beings — passes through these four levels</p>
 
   <div class="divider"></div>
 
@@ -962,8 +1323,8 @@
   <p>In Kashmir Shaivism, each letter of the Sanskrit alphabet is a <em>śakti</em> — a "little mother" (<em>mātṛkā</em>). These letter-energies are the actual building blocks of manifestation. The highest mantra is silence — because silence is Parā Vāk, the supreme level of speech from which all mantras emerge.</p>
 
   <blockquote>
-    <p>"No tradition has gone into it, to my knowledge, as deeply as Kashmir Shaivism — the reality of the letters, what is this energy of letters which expresses itself in words and eventually as sentences."</p>
-    <cite>— George Barrer</cite>
+    <p>"The universe is the embodiment of the word. All differentiation arises from the letters which are the supreme Śaktis of consciousness."</p>
+    <cite>— Abhinavagupta, Tantrāloka, III</cite>
   </blockquote>
 </section>
 
@@ -984,9 +1345,59 @@
     <div class="card"><div class="card-desc">In deep meditation, when the breath becomes extremely subtle, the meditator can directly perceive Spanda as a "vibrationless vibration" — dynamic stillness teeming with infinite potential.</div></div>
   </div>
 
+  <div class="divider"></div>
+
+  <h3>The Universal Process Cycle</h3>
+  <p style="font-size:13px;color:var(--text-dim);margin-bottom:24px;">Everything maps to one cycle: Awareness → Impulse → Pattern → Expression → Perception → Return. Spanda is the engine that drives it all.</p>
+
+  <!-- Cycle nodes as a flowing grid -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:24px 0;">
+    <div class="card" style="text-align:center;border-color:var(--gold-dim);padding:16px;">
+      <div style="font-size:10px;color:var(--gold);opacity:0.6;">①</div>
+      <div style="font-size:13px;font-weight:600;color:var(--gold);">PRAKĀŚA</div>
+      <div style="font-size:9px;color:var(--text-muted);">Light of awareness</div>
+    </div>
+    <div class="card" style="text-align:center;border-color:var(--purple-dim);padding:16px;">
+      <div style="font-size:10px;color:var(--purple);opacity:0.6;">②</div>
+      <div style="font-size:13px;font-weight:600;color:var(--purple);">VIMARŚA</div>
+      <div style="font-size:9px;color:var(--text-muted);">Self-recognition</div>
+    </div>
+    <div class="card" style="text-align:center;border-color:var(--purple-dim);padding:16px;">
+      <div style="font-size:10px;color:var(--purple);opacity:0.6;">③</div>
+      <div style="font-size:13px;font-weight:600;color:var(--purple);">SPANDA</div>
+      <div style="font-size:9px;color:var(--text-muted);">Pulse / vibration</div>
+    </div>
+    <div class="card" style="text-align:center;border-color:var(--gold-dim);padding:16px;">
+      <div style="font-size:10px;color:var(--gold);opacity:0.6;">④</div>
+      <div style="font-size:13px;font-weight:600;color:var(--gold);">ICCHĀ</div>
+      <div style="font-size:9px;color:var(--text-muted);">Will / intent</div>
+    </div>
+    <div class="card" style="text-align:center;border-color:var(--gold-dim);padding:16px;">
+      <div style="font-size:10px;color:var(--gold);opacity:0.6;">⑤</div>
+      <div style="font-size:13px;font-weight:600;color:var(--gold);">JÑĀNA</div>
+      <div style="font-size:9px;color:var(--text-muted);">Pattern / knowledge</div>
+    </div>
+    <div class="card" style="text-align:center;border-color:var(--green-dim);padding:16px;">
+      <div style="font-size:10px;color:var(--green);opacity:0.6;">⑥</div>
+      <div style="font-size:13px;font-weight:600;color:var(--green);">KRIYĀ</div>
+      <div style="font-size:9px;color:var(--text-muted);">Action / creation</div>
+    </div>
+    <div class="card" style="text-align:center;border-color:var(--purple-dim);padding:16px;">
+      <div style="font-size:10px;color:var(--purple);opacity:0.6;">⑦</div>
+      <div style="font-size:13px;font-weight:600;color:var(--purple);">MĀYĀ</div>
+      <div style="font-size:9px;color:var(--text-muted);">Filters / veiling</div>
+    </div>
+    <div class="card" style="text-align:center;border-color:var(--green-dim);padding:16px;">
+      <div style="font-size:10px;color:var(--green);opacity:0.6;">⑧</div>
+      <div style="font-size:13px;font-weight:600;color:var(--green);">TATTVAS</div>
+      <div style="font-size:9px;color:var(--text-muted);">Embodied reality</div>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:10px;color:var(--text-muted);margin-top:4px;">① → ② → ③ → ④ → ⑤ → ⑥ → ⑦ → ⑧ → ① &nbsp; The cycle is unbroken. Upāyas &amp; Pratyabhijñā = the return path.</p>
+
   <blockquote>
-    <p>"The state of enlightenment is a dynamic state. This inner joy spills over into the world to where they see the whole world is actually vibrating in this consciousness, which itself is made of pure bliss."</p>
-    <cite>— George Barrer</cite>
+    <p>"That inner bliss of consciousness is not like the bliss of worldly pleasure. It is the bliss of the Self vibrating in its own glory."</p>
+    <cite>— Spanda Kārikā, I.22</cite>
   </blockquote>
 </section>
 
@@ -995,37 +1406,58 @@
   <div class="section-label">The Screen and Its Projections</div>
   <h2>Five States of Consciousness</h2>
 
-  <div class="states-grid">
-    <div class="state-card">
-      <h4>Jāgrat</h4>
-      <div style="font-size:11px;color:var(--green);letter-spacing:1px;">WAKING</div>
-      <p style="font-size:12px;margin-top:8px;">Gross perception. The external world projected onto consciousness.</p>
-    </div>
-    <div class="state-card">
-      <h4>Svapna</h4>
-      <div style="font-size:11px;color:var(--purple);letter-spacing:1px;">DREAMING</div>
-      <p style="font-size:12px;margin-top:8px;">Subtle perception. Internal world projected by inner light. Same screen, different film.</p>
-    </div>
-    <div class="state-card" style="background:var(--bg);">
-      <h4 style="color:var(--text-dim);">Suṣupti</h4>
-      <div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">DEEP SLEEP</div>
-      <p style="font-size:12px;margin-top:8px;">Causal void. The projector is off, but the screen still exists. Subtle breath continues.</p>
+  <!-- The Screen (Turya) wrapping the three states -->
+  <div class="states-screen">
+    <div class="states-screen-label">THE SCREEN OF CONSCIOUSNESS (TURYA)</div>
+
+    <div class="states-panels">
+      <!-- Waking -->
+      <div class="state-panel" style="border:1px solid var(--green-dim);background:rgba(116,194,126,0.03);">
+        <div class="state-panel-scene" style="background:rgba(116,194,126,0.04);border:1px solid rgba(116,194,126,0.1);">
+          <span style="color:var(--green);">◯ ▭ ◎</span>
+        </div>
+        <h4 style="color:var(--green);">JĀGRAT</h4>
+        <div class="state-panel-sanskrit" style="color:var(--green);opacity:0.7;">जाग्रत् · Waking</div>
+        <p>Gross perception. The external world projected onto the screen of consciousness. Objects, people, spaces — all rendered in full detail.</p>
+      </div>
+
+      <!-- Dreaming -->
+      <div class="state-panel" style="border:1px solid var(--purple-dim);background:rgba(139,116,194,0.03);">
+        <div class="state-panel-scene" style="background:rgba(139,116,194,0.04);border:1px solid rgba(139,116,194,0.1);">
+          <span style="color:var(--purple);">◠ ∿ ○</span>
+        </div>
+        <h4 style="color:var(--purple);">SVAPNA</h4>
+        <div class="state-panel-sanskrit" style="color:var(--purple);opacity:0.7;">स्वप्न · Dream</div>
+        <p>Subtle perception. Internal world projected by the inner light. Same screen, different film — more fluid, symbolic, shape-shifting.</p>
+      </div>
+
+      <!-- Deep Sleep -->
+      <div class="state-panel" style="border:1px solid rgba(100,100,120,0.15);background:var(--bg);">
+        <div class="state-panel-scene" style="background:rgba(0,0,0,0.3);border:1px solid rgba(100,100,120,0.1);">
+          <span style="color:var(--text-muted);font-size:24px;">·</span>
+        </div>
+        <h4 style="color:var(--text-dim);">SUṢUPTI</h4>
+        <div class="state-panel-sanskrit" style="color:var(--text-muted);">सुषुप्ति · Deep Sleep</div>
+        <p>Causal void. The projector is off, but the screen still exists. No images, no content — yet awareness persists. Subtle breath continues.</p>
+      </div>
     </div>
   </div>
 
-  <div class="card" style="border-color:var(--gold-dim);background:var(--gold-faint);text-align:center;padding:20px;margin:16px 0;">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);">④ Turya — "The Fourth"</div>
-    <p style="font-size:13px;margin-top:6px;">The screen itself. Pure awareness underlying all three states. Experienced in samādhi when breath stops.</p>
+  <!-- Turya -->
+  <div class="card" style="border-color:var(--gold-dim);background:var(--gold-faint);text-align:center;padding:24px;margin:16px 0;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);">④ Turya — तुर्य — "The Fourth"</div>
+    <p style="font-size:13px;margin-top:8px;">The screen itself. Pure awareness underlying all three states. Experienced in samādhi when breath stops. Not a "state" in the usual sense — it is the <em>ground</em> on which all states appear.</p>
   </div>
 
-  <div class="card" style="border-color:var(--gold-dim);text-align:center;padding:20px;">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);">⑤ Turīyātīta — "Beyond the Fourth"</div>
-    <p style="font-size:13px;margin-top:6px;">Turya permanently pervades waking, dreaming, and deep sleep. Full realization. The yogi never loses awareness.</p>
+  <!-- Turiyatita -->
+  <div class="card" style="border:1.5px solid var(--gold);text-align:center;padding:24px;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);font-weight:600;">⑤ Turīyātīta — तुरीयातीत — "Beyond the Fourth"</div>
+    <p style="font-size:13px;margin-top:8px;">Turya permanently pervades waking, dreaming, and deep sleep. Full realization. The yogi never loses awareness — the screen is always luminous, always recognized, regardless of what plays upon it.</p>
   </div>
 
   <blockquote>
-    <p>"The present moment is the eternality of creation."</p>
-    <cite>— George Barrer</cite>
+    <p>"He who has this knowledge sees the whole universe as a play of consciousness — waking, dreaming, and deep sleep are all nothing but different movements of that one awareness."</p>
+    <cite>— Śiva Sūtras, III.9–10</cite>
   </blockquote>
 </section>
 
@@ -1052,8 +1484,8 @@
   </div>
 
   <blockquote>
-    <p>"The first experience when the dawning of enlightenment happens... the first thing is they realize it was always there."</p>
-    <cite>— George Barrer</cite>
+    <p>"With the unfolding of the center, there is the acquisition of the bliss of consciousness. This is pratyabhijñā — knowing again what was never truly forgotten."</p>
+    <cite>— Kṣemarāja, Pratyabhijñā Hṛdayam, Sūtra 17</cite>
   </blockquote>
 </section>
 
@@ -1075,8 +1507,8 @@
   </div>
 
   <blockquote>
-    <p>"Kuṇḍalinī rises not through any particular thing you are doing, but in reaching the state of complete and utter surrender — when the breath stops, then automatically Kuṇḍalinī rises."</p>
-    <cite>— George Barrer</cite>
+    <p>"When the middle channel is developed through the dissolving of the prāṇa, then Kuṇḍalinī rises of its own accord — not by force, but by the grace of awareness."</p>
+    <cite>— Swami Lakshman Joo, Kashmir Shaivism: The Secret Supreme</cite>
   </blockquote>
 </section>
 
@@ -1103,8 +1535,8 @@
   <p>The key isn't just breath movement — it's the <strong>turning points</strong> where inhalation pauses before exhalation, and vice versa. These gaps are doorways to expanded awareness.</p>
 
   <blockquote>
-    <p>"The trick is not just in the movement of the breath. The trick is in understanding the turning points where the breath turns around... these junctions are the connecting rod with a much greater reality."</p>
-    <cite>— George Barrer</cite>
+    <p>"At the point where the prāṇa and apāna merge — at the junction of inhalation and exhalation — there is a space void of thought. By contemplating there, the nature of Bhairava is revealed."</p>
+    <cite>— Vijñāna Bhairava Tantra, verses 24–25</cite>
   </blockquote>
 
   <h3>The Five Prāṇas</h3>
@@ -1139,8 +1571,8 @@
   <p>Different worlds operate on radically different time scales. Our 1 year = 1 day for a departing soul. At higher levels, thousands of our years may equal a single day. In samādhi, time stops entirely.</p>
 
   <blockquote>
-    <p>"In the world of Para Śiva, everything I experienced may be just a bubble. One bubble in the great ocean of Para Śiva."</p>
-    <cite>— Abhinavagupta (via George Barrer)</cite>
+    <p>"This whole universe is nothing but the expansion of Śakti in the form of the thirty-six tattvas. All these worlds are strung on the thread of that supreme awareness like pearls on a cord."</p>
+    <cite>— Abhinavagupta, Tantrāloka, IX</cite>
   </blockquote>
 
   <p>Each individual's field extends approximately <strong>80 miles in all directions</strong> — creating overlapping bubbles of awareness. Advanced practitioners can sense the energy in their own bubble and the bubbles of others.</p>
@@ -1237,7 +1669,8 @@
 
 <footer>
   <p>Geography of Consciousness · A Map of Kashmir Shaivism</p>
-  <p style="margin-top:8px;"><a href="https://serjsolarpunk.com" target="_blank" rel="noopener">serjsolarpunk.com</a></p>
+  <p style="margin-top:16px; max-width:560px; margin-left:auto; margin-right:auto; font-size:13px; line-height:1.8; color:var(--text-dim); font-style:italic;">I made this interactive site as an offering to Lord Shiva himself, in the hope that it would inspire courage in you, seeker. May these maps smile on you like a horizon within reach, covered in the gold of dawn approaching.</p>
+  <p style="margin-top:16px;"><a href="https://serjsolarpunk.com" target="_blank" rel="noopener">serjsolarpunk.com</a></p>
 </footer>
 
 <script>
