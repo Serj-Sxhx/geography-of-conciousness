@@ -88,17 +88,15 @@
   }
   .tab-scroll {
     display: flex;
-    gap: 4px;
-    overflow-x: auto;
-    scrollbar-width: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 12px 0;
+    padding: 14px 0;
   }
-  .tab-scroll::-webkit-scrollbar { display: none; }
   .tab-btn {
-    flex-shrink: 0;
-    padding: 8px 18px;
+    padding: 7px 16px;
     border: 1px solid transparent;
     border-radius: 100px;
     background: transparent;
@@ -245,6 +243,8 @@
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 24px 0; }
   @media (max-width: 640px) {
     .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .tab-scroll { gap: 5px; padding: 10px 0; }
+    .tab-btn { padding: 6px 12px; font-size: 11px; }
   }
 
   /* CARDS */
