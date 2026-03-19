@@ -161,17 +161,19 @@
   }
   .sidebar-toggle:hover { border-color: var(--gold-dim); }
 
-  /* MAIN CONTENT — offset for sidebar */
+  /* MAIN CONTENT — centered in space right of sidebar */
   main {
     max-width: 960px;
-    margin-left: 200px;
+    margin-left: max(200px, calc(50vw - 380px));
     margin-right: auto;
     padding: 48px 48px 80px;
   }
 
-  /* HEADER — offset for sidebar */
+  /* HEADER — centered in space right of sidebar */
   header {
-    margin-left: 200px;
+    max-width: 960px;
+    margin-left: max(200px, calc(50vw - 380px));
+    margin-right: auto;
   }
 
   /* Mobile: sidebar becomes overlay */
@@ -513,7 +515,9 @@
   footer {
     text-align: center;
     padding: 40px 24px;
-    margin-left: 200px;
+    max-width: 960px;
+    margin-left: max(200px, calc(50vw - 380px));
+    margin-right: auto;
     border-top: 1px solid var(--border);
     color: var(--text-muted);
     font-size: 12px;
